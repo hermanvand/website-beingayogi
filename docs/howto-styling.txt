@@ -1,0 +1,7 @@
+Styling met bootstrap & styled components en... sass
+
+- het uitgangspunt is om componenten en style van bootstrap te gebruiken. Het is handig om met container, row & col te werken. Maar er zijn ook andere componenten, zoals nav & dropdown
+- we maken een standaard/global scss file. De basis style wordt centraal met sass in bootstrap verandert. Dit is styles/bootstrap.scss
+- met styled components kun je vervolgens individuele styles aanpassen. Of styles maken waarin bootstrap niet voorziet.
+- styled component schrijven we in het component zelf
+- dus de prio is: bootstrap/scss/bootstrap.scss -> styles/bootstrap.scss -> components/styled-component

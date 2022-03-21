@@ -1,0 +1,29 @@
+{
+  "name": "being-a-yogi",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "axios": "^0.21.4",
+    "bootstrap": "^5.1.3",
+    "next": "^12.1.0",
+    "react": "17.0.1",
+    "react-bootstrap": "^1.6.4",
+    "react-dom": "17.0.1",
+    "sass": "^1.43.4",
+    "storyblok-js-client": "^3.3.1",
+    "storyblok-react": "^0.1.2",
+    "storyblok-rich-text-react-renderer": "^2.4.1",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.13.3"
+  }
+}
