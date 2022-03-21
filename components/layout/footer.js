@@ -36,7 +36,7 @@ function Footer(props) {
             <Row className="fullWidth">
                 <Col className="copyright">
                     <p>
-                    &copy; Bamboehuis, 2021
+                    &copy; Bamboehuis, 2022
                     </p>
                 </Col>
                <Col>
