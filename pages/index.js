@@ -15,7 +15,7 @@ class HomePage extends React.Component {
     StoryblokService.setQuery(query)
 
     let res = await StoryblokService.get('cdn/stories/home', {
-        "resolve_relations": "asanaFeatureRow.asanas,subjectRow.articleList"
+        "resolve_relations": "subjectRow.articleList"
     })
 
     return {
