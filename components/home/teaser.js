@@ -36,9 +36,7 @@ function Teaser({blok}) {
             <Col>
               <h2>{blok.headline}</h2>
               <p>{blok.description}</p>
-              <Link href={blok.playlink.cached_url}>
-                <a><button type="button" className="btn btn-light"><FontAwesomeIcon icon='play' size="2x"/> details</button></a>
-              </Link>
+              <a href={blok.playlink.cached_url}><button type="button" className="btn btn-light"><FontAwesomeIcon icon='play' size="2x"/> details</button></a>
             </Col>
           </Row>
         </StyledContainer>

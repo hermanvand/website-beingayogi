@@ -52,6 +52,7 @@ const StyledContainer = styled(Container)`
 
 function Video ({ content, tags }) {
   //console.log(JSON.stringify(content))
+  //console.log(JSON.stringify(tags))
   
   let borderColor= "#BA9645"
   let iconUrl = "";
@@ -98,7 +99,7 @@ function Video ({ content, tags }) {
               <div>
                 { tags && tags.length > 0 && <p><hr className="line"/>is gelabeld als</p> }
                 { tags.map((tag) => (
-                  <Button key={tag.name} href={"/search?q=tag:" + tag} variant="secondary">{tag}</Button>
+                  <Button key={tag} href={"/search?q=tag:" + tag} variant="secondary">{tag}</Button>
                 ))}
               </div>
             </div>
