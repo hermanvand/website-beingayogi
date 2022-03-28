@@ -59,7 +59,7 @@ function SubjectRow({blok}) {
                   }
                 </Col>
             </Row>
-            <Row>
+            <Row className="flex-nowrap overflow-auto">
             {blok.articleList.map((article) => {
                 return (
                         <Col className="item" key={article.content._uid} style={{backgroundImage: "url("+article.content.image+")"}} >
