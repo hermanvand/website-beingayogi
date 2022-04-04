@@ -2,7 +2,7 @@
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/bootstrap.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faAdjust, faInfo, faPlay, faSearch, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { faAdjust, faInfo, faPlay, faSearch, faExternalLinkAlt, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 import { AppWrapper } from '../context';
 import link from 'next/link'
 
@@ -12,6 +12,7 @@ library.add(faInfo)
 library.add(faSearch)
 library.add(faAdjust)
 library.add(faExternalLinkAlt)
+library.add(faAlignLeft)
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -35,14 +35,15 @@ class ArticlePage extends React.Component {
   render() {
     const contentOfStory = this.state.story.content
     const tagList = this.state.story.tag_list
+    const thisDate = this.state.story.created_at
 
     let mediaTypePage
     switch (contentOfStory.component) {
       case "textPage":
-        mediaTypePage = <Text content={contentOfStory} tags={tagList}/>
+        mediaTypePage = <Text content={contentOfStory} tags={tagList} thisDate={thisDate}/>
         break;
       case "videoPage":
-        mediaTypePage = <Video content={contentOfStory}  tags={tagList}/>
+        mediaTypePage = <Video content={contentOfStory}  tags={tagList} thisDate={thisDate}/>
         break;
       default:
         mediaTypePage = <NotFound content={contentOfStory}  tags={tagList}/>

@@ -29,6 +29,13 @@ const StyledContainer = styled(Container)`
 function Teaser({blok}) {
   //console.log(JSON.stringify(blok))
 
+  let playIcon = "play";
+  let playText = "bekijk video..."
+  if (blok.playlink.cached_url.startsWith("artikel/text")) {
+    playIcon = "align-left";
+    playText = "lees meer..."
+  }
+
   return (
     <SbEditable content={blok}>
         <StyledContainer className="teaser" url={"url("+blok.image.filename+")"}>
@@ -36,7 +43,7 @@ function Teaser({blok}) {
             <Col>
               <h2>{blok.headline}</h2>
               <p>{blok.description}</p>
-              <a href={blok.playlink.cached_url}><button type="button" className="btn btn-light"><FontAwesomeIcon icon='play' size="2x"/> details</button></a>
+              <a href={blok.playlink.cached_url}><button type="button" className="btn btn-light"><FontAwesomeIcon icon={playIcon} size="2x"/> {playText}</button></a>
             </Col>
           </Row>
         </StyledContainer>

@@ -16,18 +16,33 @@ const StyledContainer = styled(Container)`
     width: 100%;
   };
   // col 2
-  div.content {
+  .content > img, .content > p > img {
+    width: 100%;
+    max-width: 100%;
   };
-  div.content > h1,h2,h3 {
+  .content > h1,h2,h3 {
     color: #AE877D;
   };
+  .content > h4,h5,h6 {
+    color: #BA9645;
+  }
+  .intro {
+    margin-left:20px;
+    margin-right: 20px;
+    font-style: italic;
+  }
+  .publishedDate {
+    font-size: 0.8em;
+    color: #828290;
+  }
   // col 3
   div.right {
     text-align: center;
   };
   div.related {
     margin-top:20px;
-    display: inline-block;
+    text-align:center;
+    color: #828290;
   };
   .cat {
     display: inline-block;
@@ -45,8 +60,10 @@ const StyledContainer = styled(Container)`
   }
 `
 
-function Text ({content, tags}) {
+function Text ({content, tags, thisDate}) {
   //console.log(JSON.stringify(content))
+  //console.log(JSON.stringify(tags))
+  //console.log(JSON.stringify(thisDate))
   
   let borderColor= "#BA9645"
   let iconUrl = "";
@@ -69,6 +86,9 @@ function Text ({content, tags}) {
       break;
   }
 
+  let now = new Date(thisDate);
+  let displayDate = now.toLocaleDateString("nl-NL", {year:'numeric', month:'long', day:'numeric'})
+
   return (
   <SbEditable content={content} tags={tags}>
     <StyledContainer bordercolor={ borderColor }>
@@ -78,7 +98,18 @@ function Text ({content, tags}) {
           </Col>
           <Col sm={6} className="content">
               <h1>{content.title}</h1>
+              <p className="publishedDate">{displayDate}</p>
+              <p className="intro">{content.intro}</p>
               {render(content.long_text)}
+              <div className="related">
+                {(typeof content.related !== 'undefined') &&
+                <p><hr className="line"/>Heeft relatie met</p>
+                }
+                {(typeof content.related !== 'undefined') &&
+                content.related.map((nestedBlok) => (
+                <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
+                ))}
+              </div>
           </Col>
           <Col className="right">
             <div>
@@ -89,16 +120,7 @@ function Text ({content, tags}) {
               <div>
                 { tags && tags.length > 0 && <p><hr className="line"/>Is gelabeld als</p> }
                 { tags.map((tag) => (
-                  <Button key={tag.name} href={"/search?q=tag:" + tag} variant="secondary">{tag}</Button>
-                ))}
-              </div>
-              <div className="related">
-                {(typeof content.related !== 'undefined') &&
-                <p><hr className="line"/>Heeft relatie met</p>
-                }
-                {(typeof content.related !== 'undefined') &&
-                content.related.map((nestedBlok) => (
-                <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
+                  <Button key={tag} href={"/search?q=tag:" + tag} variant="secondary">{tag}</Button>
                 ))}
               </div>
             </div>

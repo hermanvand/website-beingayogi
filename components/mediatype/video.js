@@ -30,6 +30,16 @@ const StyledContainer = styled(Container)`
   };
   .content {
   }
+  .content > img, .content > p > img {
+    width: 100%;
+    max-width: 100%;
+  };
+  .content > h1,h2,h3 {
+    color: #AE877D;
+  };
+  .content > h4,h5,h6 {
+    color: #BA9645;
+  }
   .right {
     text-align: center;
     margin-left: 10px;
@@ -48,11 +58,21 @@ const StyledContainer = styled(Container)`
     margin: auto;
     margin-bottom: 10px;
   }
+  .intro {
+    margin-left:20px;
+    margin-right: 20px;
+    font-style: italic;
+  }
+  .publishedDate {
+    font-size: 0.8em;
+    color: #828290;
+  }
 `
 
-function Video ({ content, tags }) {
+function Video ({ content, tags, thisDate }) {
   //console.log(JSON.stringify(content))
   //console.log(JSON.stringify(tags))
+  //console.log(JSON.stringify(thisDate))
   
   let borderColor= "#BA9645"
   let iconUrl = "";
@@ -75,6 +95,9 @@ function Video ({ content, tags }) {
       break;
   }
 
+  let now = new Date(thisDate);
+  let displayDate = now.toLocaleDateString("nl-NL", {year:'numeric', month:'long', day:'numeric'})
+
   return (
   <SbEditable content={content}>
     <StyledContainer bordercolor={ borderColor }>
@@ -88,6 +111,8 @@ function Video ({ content, tags }) {
             <div className="videoContainer">
                   <iframe src={"https://www.youtube.com/embed/" + content.youtube_video_id + "?start=13"} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
+            <p className="publishedDate">{displayDate}</p>
+            <p className="intro">{content.intro}</p>
             {render(content.long_text)}
           </Col>
           <Col sm={2} className="right">
