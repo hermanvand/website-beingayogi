@@ -53,6 +53,11 @@ const StyledContainer = styled(Container)`
     border-bottom-color: ${(props) => props.bordercolor};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  div.related {
+    margin-top:20px;
+    text-align:center;
+    color: #828290;
+  };
   .line {
     width: 150px;
     margin: auto;
@@ -114,6 +119,15 @@ function Video ({ content, tags, thisDate }) {
             <p className="publishedDate">{displayDate}</p>
             <p className="intro">{content.intro}</p>
             {render(content.long_text)}
+            <div className="related">
+                {(typeof content.related !== 'undefined') &&
+                <p><hr className="line"/>Heeft relatie met</p>
+                }
+                {(typeof content.related !== 'undefined') &&
+                content.related.map((nestedBlok) => (
+                <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
+                ))}
+              </div>
           </Col>
           <Col sm={2} className="right">
             <div>
@@ -131,10 +145,6 @@ function Video ({ content, tags, thisDate }) {
           </Col>
         </Row>
     </StyledContainer>
-    {(typeof content.related !== 'undefined') &&
-        content.related.map((nestedBlok) => (
-        <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
-    ))}
   </SbEditable>
   )
 }
