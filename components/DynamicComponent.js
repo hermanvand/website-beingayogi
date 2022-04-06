@@ -3,6 +3,7 @@ import Feature from './home/feature'
 import FeatureRow from './home/featureRow.js'
 import SubjectRow from './home/subjectRow.js'
 import Teaser from './home/teaser.js'
+import Tagline from './home/tagline.js'
 import Card from './pages/card'
 import CardRow from './pages/cardRow'
 
@@ -12,7 +13,8 @@ const Components = {
   'featureRow': FeatureRow,
   'subjectRow': SubjectRow,
   'card': Card,
-  'cardRow': CardRow
+  'cardRow': CardRow,
+  'tagline': Tagline
 }
 
 function DynamicComponent ({blok}) {
