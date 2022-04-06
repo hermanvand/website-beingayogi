@@ -6,13 +6,17 @@ import Link from 'next/link'
 import Search from '../navigation/search'
 
 const StyledContainer = styled(Container)`
-    /*background-color: #34605f;*/
-    border-bottom: 3px solid #34605f;
+    /* ral 9010 */
+    background-color: #e8e3d9;
+    border-bottom: 2px solid #34605f;
     padding: 0px;
 
     //.dropdown-toggle {
     //    background: #34605f;
     //}
+    #myNavbar {
+        padding-left: 20px;
+    }
     max-width:100%;
 `
 
@@ -25,8 +29,8 @@ const StyledContainer = styled(Container)`
 function Header(props) {
     return (
         <StyledContainer className={props.className}>
-            <Navbar className="fullWidth" id="myNavbar" bg="light" expand="lg">
-                <Navbar.Brand id="myNavbarBrand" href="/"><img src="/being a yogi.png" height="80px"/></Navbar.Brand>
+            <Navbar className="fullWidth" id="myNavbar" expand="lg">
+                <Navbar.Brand id="myNavbarBrand" href="/"><img src="/beingayogi-logo.png" height="80px"/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Container className="d-flex justify-content-end">

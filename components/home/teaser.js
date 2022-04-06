@@ -17,7 +17,7 @@ const StyledContainer = styled(Container)`
   }
   // title
   > div > div > h2 {
-      font-size: 5em;
+      font-size: 3em;
   };
   // description
   > div > div > p {

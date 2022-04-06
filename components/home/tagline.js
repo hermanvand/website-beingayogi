@@ -6,7 +6,7 @@ const StyledContainer = styled(Container)`
   background-color: #34605f;
   max-width:100%;
   .fullWidth {
-      margin-top: 10px;
+      margin-top: 0px;
       margin-left: 0px;
       margin-right: 0px;
       text-align: center;

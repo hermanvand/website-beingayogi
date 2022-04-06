@@ -10,6 +10,8 @@ const StyledContainer = styled(Container)`
   .fullWidth {
       margin-left: 0px;
       margin-right: 0px;
+      padding-left: 20px;
+      font-size: 1.2em;
   } 
   // title row
   > div > div.title {
