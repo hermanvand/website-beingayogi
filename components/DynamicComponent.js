@@ -6,6 +6,7 @@ import Teaser from './home/teaser.js'
 import Tagline from './home/tagline.js'
 import Card from './pages/card'
 import CardRow from './pages/cardRow'
+import TextBox from './pages/textBox'
 
 const Components = {
   'teaser': Teaser,
@@ -14,7 +15,8 @@ const Components = {
   'subjectRow': SubjectRow,
   'card': Card,
   'cardRow': CardRow,
-  'tagline': Tagline
+  'tagline': Tagline,
+  'textbox': TextBox
 }
 
 function DynamicComponent ({blok}) {

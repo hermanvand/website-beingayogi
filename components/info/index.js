@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Image } from "react-bootstrap"
+import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicComponent from '../DynamicComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -79,7 +80,13 @@ function Info ({ content }) {
             <br/>
 
             <div className="storyblok-richtext">
-              {render(content.long_text)}
+              {render(content.long_text,
+                {
+                  defaultBlokResolver: (name, props) => (
+                    <DynamicComponentRendered component={name} blok={props} key={props._uid} />
+                  )
+                }
+              )}
             </div>
             
             <div className="feature">

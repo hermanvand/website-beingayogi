@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { css } from 'styled-components'
 import SbEditable from 'storyblok-react'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
   // title row
@@ -64,9 +64,13 @@ function SubjectRow({blok}) {
                 return (
                         <Col className="item" key={article.content._uid} style={{backgroundImage: "url("+article.content.image+")"}} >
                             <div>
-                            <a href={"/"+article.full_slug}>
-                               {article.content.title}
-                            </a>
+                            <OverlayTrigger
+                              placement="bottom"
+                              overlay={<Tooltip>{article.content.summary}</Tooltip>}>
+                              <a href={"/"+article.full_slug}>
+                                {article.content.title}
+                              </a>
+                            </OverlayTrigger>
                             </div>
                         </Col>
                         )

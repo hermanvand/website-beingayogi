@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Button } from "react-bootstrap"
+import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicComponent from '../DynamicComponent'
 import DynamicIcon from '../DynamicIcon'
 
@@ -118,7 +119,13 @@ function Video ({ content, tags, thisDate }) {
             </div>
             <p className="publishedDate">{displayDate}</p>
             <p className="intro">{content.intro}</p>
-            {render(content.long_text)}
+            {render(content.long_text,
+              {
+                defaultBlokResolver: (name, props) => (
+                  <DynamicComponentRendered component={name} blok={props} key={props._uid} />
+                )
+              }
+            )}
             <div className="related">
                 {(typeof content.related !== 'undefined') &&
                 <p><hr className="line"/>Heeft relatie met</p>

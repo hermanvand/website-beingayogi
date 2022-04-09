@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Button } from "react-bootstrap"
+import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicComponent from '../DynamicComponent'
 import DynamicIcon from '../DynamicIcon'
 
@@ -89,7 +90,13 @@ function Main ({ content }) {
 
           <Col sm={8} className="content">
               <h1>{content.title}</h1>
-              {render(content.long_text)}
+              {render(content.long_text,
+                {
+                  defaultBlokResolver: (name, props) => (
+                    <DynamicComponentRendered component={name} blok={props} key={props._uid} />
+                  )
+                }
+              )}
           </Col>
 
           <Col sm={2} className="right">
