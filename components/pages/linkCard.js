@@ -9,6 +9,11 @@ const StyledContainer = styled(Container)`
 function LinkCard ({blok}) {
   //console.log(JSON.stringify({blok}))
 
+  let url = blok.link.cached_url;
+  if (! url.startsWith("https://")) {
+    url = "/" + url;
+  }
+
   return (
     <SbEditable content={blok}>
         <StyledContainer>
@@ -22,7 +27,7 @@ function LinkCard ({blok}) {
                             <Card.Text>
                             {blok.description}
                             </Card.Text>
-                            <Button variant="primary" href={"/"+blok.link.cached_url}>{blok.linktext}</Button>
+                            <Button variant="primary" href={url}>{blok.linktext}</Button>
                         </Card.Body>
                     </Card>
                 </Col>
