@@ -10,6 +10,14 @@
 // oranje:#B76352
 // rood:#793540
 
+// herman items :-)
+.contentIntro {
+    margin-top:20px;
+    margin-left:40px;
+    margin-right: 40px;
+    font-style: italic;
+}
+
 // storyblok items
 .storyblok-richtext {
 
@@ -36,6 +44,15 @@
         background-color: rgba(1, 85, 154, 0.5);
         color: white;
     }
+}
+
+// html items
+
+h1,h2,h3 {
+    color: #AE877D;
+};
+h4,h5,h6 {
+    color: #BA9645;
 }
 
 a.text:link, a.text:visited {

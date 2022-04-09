@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 const StyledContainer = styled(Container)`
   .tag {
     margin-right:10px;
+    margin-bottom:10px;
   }
 `
 
