@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 import DynamicIcon from '../DynamicIcon'
@@ -16,16 +16,15 @@ const StyledContainer = styled(Container)`
   border-bottom-color: ${(props) => props.bordercolor};
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 10px;
-  // col
-  > div > div {
-      text-align: center;
-  };
+  text-align: center;
   // title
-  > div > div > p.name {
+  .title {
       font-size: 2em;
       font-weight: bold;
       padding: 10px;
-  };
+  }
+  .description {
+  }
 `
 
 function Feature ({blok}) {
@@ -56,9 +55,9 @@ function Feature ({blok}) {
                 <Col>
                     <a href={blok.link.cached_url} className="text-decoration-none text-reset">
                     <DynamicIcon type={blok.icon} />
-                    <p className="name">
+                    <p className="title">
                     </p>
-                    <p>
+                    <p className="description">
                         {blok.description}
                     </p>
                     </a>

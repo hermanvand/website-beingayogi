@@ -1,13 +1,12 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import React from 'react'
 import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
 
 const StyledContainer = styled(Container)`
-  // col
-  > div > div {
+  // row
+  .teaser {
     margin-top: 30px;
     padding: 50px;
     height: 85vh;
@@ -15,13 +14,13 @@ const StyledContainer = styled(Container)`
     background-size: 100%;
     background-image: ${(props) => props.url};
   }
-  // title
-  > div > div > h2 {
+  // col
+  .headline {
       font-size: 3em;
+      color: black;
   };
-  // description
-  > div > div > p {
-      font-size: 2em;
+  .description{
+      font-size: 1.5em;
       margin-bottom: 25px;
   };
 `
@@ -38,11 +37,11 @@ function Teaser({blok}) {
 
   return (
     <SbEditable content={blok}>
-        <StyledContainer className="teaser" url={"url("+blok.image.filename+")"}>
-          <Row>
+        <StyledContainer url={"url("+blok.image.filename+")"}>
+          <Row className="teaser">
             <Col>
-              <h2>{blok.headline}</h2>
-              <p>{blok.description}</p>
+              <h2 className='headline'>{blok.headline}</h2>
+              <p className='description'>{blok.description}</p>
               <a href={blok.playlink.cached_url}><button type="button" className="btn btn-light"><FontAwesomeIcon icon={playIcon} size="2x"/> {playText}</button></a>
             </Col>
           </Row>

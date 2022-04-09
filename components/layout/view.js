@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import {themes, ThemeContext} from '../../context/theme';
 
 const StyledDiv = styled.div`

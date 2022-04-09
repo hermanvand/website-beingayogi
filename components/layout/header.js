@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components'
-import { Container, Row, Col, Dropdown, Navbar, Nav, NavDropdown } from "react-bootstrap"
+import styled from 'styled-components'
+import { Container, Dropdown, Navbar, Nav } from "react-bootstrap"
 import ThemeButton from '../navigation/themeButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
 import Search from '../navigation/search'
 
 const StyledContainer = styled(Container)`
@@ -10,14 +9,18 @@ const StyledContainer = styled(Container)`
     background-color: #e8e3d9;
     border-bottom: 2px solid #34605f;
     padding: 0px;
+    max-width:100%;
 
-    //.dropdown-toggle {
-    //    background: #34605f;
-    //}
-    #myNavbar {
+    // navbar
+    #myNavbarBrand, #myNavbar {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    #myNavbarBrand {
         padding-left: 20px;
     }
-    max-width:100%;
 `
 
 // <!-- known bug: align=end on a dropdownmenu does not work within a navbar

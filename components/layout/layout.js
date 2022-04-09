@@ -1,4 +1,3 @@
-import styled, { css } from 'styled-components'
 import StoryblokService from '../../adapters/storyblok-service'
 
 // Head, Header & Footer are main components of a page
