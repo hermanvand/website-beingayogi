@@ -4,8 +4,7 @@ import FeatureRow from './home/featureRow.js'
 import SubjectRow from './home/subjectRow.js'
 import Teaser from './home/teaser.js'
 import Tagline from './home/tagline.js'
-import Card from './pages/card'
-import CardRow from './pages/cardRow'
+import LinkCard from './pages/linkCard'
 import TextBox from './pages/textBox'
 
 const Components = {
@@ -13,9 +12,8 @@ const Components = {
   'feature': Feature,
   'featureRow': FeatureRow,
   'subjectRow': SubjectRow,
-  'card': Card,
-  'cardRow': CardRow,
   'tagline': Tagline,
+  'linkCard': LinkCard,
   'textbox': TextBox
 }
 

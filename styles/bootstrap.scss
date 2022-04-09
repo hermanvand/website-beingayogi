@@ -20,7 +20,6 @@
 
 // storyblok items
 .storyblok-richtext {
-
     blockquote {
         font-style: italic;
         padding: 20px;
@@ -30,7 +29,7 @@
         width:100%;
     }
 
-    a:link, a:visited {
+    a:link:no-button, a:visited:no-button {
         background-color: white;
         color: black;
         border-bottom: 3px solid #01559A;
@@ -40,7 +39,7 @@
         display: inline-block;
     }
       
-    a:hover, a:active {
+    a:hover:no-button, a:active:no-button {
         background-color: rgba(1, 85, 154, 0.5);
         color: white;
     }
@@ -68,14 +67,6 @@ a.text:link, a.text:visited {
 a.text:hover, a.text:active {
     background-color: rgba(1, 85, 154, 0.5);
     color: white;
-}
-
-a.card:link, a.card:visited, a.card:hover, a.card:active {
-    text-decoration: none;
-    padding: 10px;
-    color: black;
-    display: inline-block;
-    border: 0px;
 }
 
 // custom bootstrap variables
