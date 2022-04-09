@@ -14,7 +14,7 @@ const StyledContainer = styled(Container)`
       padding-left: 20px;
       font-size: 1.2em;
   } 
-  .title {
+  .featureRowTitle {
     margin-top: 30px;
     padding-left: 0px;
     font-size: 1.2em;
@@ -33,7 +33,7 @@ function FeatureRow ({blok}) {
     <SbEditable content={blok}>
           <StyledContainer>
               <Row className="fullWidth">
-                  <Col className="title">
+                  <Col className="featureRowTitle">
                       <p>{blok.title}</p>
                   </Col>
               </Row>

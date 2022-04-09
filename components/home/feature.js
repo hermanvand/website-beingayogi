@@ -18,10 +18,9 @@ const StyledContainer = styled(Container)`
   padding: 10px;
   text-align: center;
   // title
-  .title {
-      font-size: 2em;
+  .featureTitle {
+      font-size: 1.2em;
       font-weight: bold;
-      padding: 10px;
   }
   .description {
   }
@@ -55,7 +54,8 @@ function Feature ({blok}) {
                 <Col>
                     <a href={blok.link.cached_url} className="text-decoration-none text-reset">
                     <DynamicIcon type={blok.icon} />
-                    <p className="title">
+                    <p className="featureTitle">
+                      {blok.name}
                     </p>
                     <p className="description">
                         {blok.description}
