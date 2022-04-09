@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicComponent from '../DynamicComponent'
 import DynamicIcon from '../DynamicIcon'
+import DisplayDate from '../pages/displayDate'
 
 const StyledContainer = styled(Container)`
   // row
@@ -32,10 +33,6 @@ const StyledContainer = styled(Container)`
     margin-right: 20px;
     font-style: italic;
   }
-  .publishedDate {
-    font-size: 0.8em;
-    color: #828290;
-  }
   // col 3
   div.right {
     text-align: center;
@@ -62,7 +59,7 @@ const StyledContainer = styled(Container)`
 `
 
 function Text ({content, tags, thisDate}) {
-  console.log(JSON.stringify(content))
+  //console.log(JSON.stringify(content))
   //console.log(JSON.stringify(tags))
   //console.log(JSON.stringify(thisDate))
   
@@ -87,9 +84,6 @@ function Text ({content, tags, thisDate}) {
       break;
   }
 
-  let now = new Date(thisDate);
-  let displayDate = now.toLocaleDateString("nl-NL", {year:'numeric', month:'long', day:'numeric'})
-
   return (
   <SbEditable content={content} tags={tags}>
     <StyledContainer bordercolor={ borderColor }>
@@ -99,7 +93,7 @@ function Text ({content, tags, thisDate}) {
           </Col>
           <Col sm={6} className="content">
               <h1>{content.title}</h1>
-              <p className="publishedDate">{displayDate}</p>
+              <DisplayDate thisDate={thisDate} />
               <p className="intro">{content.intro}</p>
               {render(content.long_text,
                 {

@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicComponent from '../DynamicComponent'
 import DynamicIcon from '../DynamicIcon'
+import DisplayDate from '../pages/displayDate'
 
 const StyledContainer = styled(Container)`
   // col
@@ -69,10 +70,6 @@ const StyledContainer = styled(Container)`
     margin-right: 20px;
     font-style: italic;
   }
-  .publishedDate {
-    font-size: 0.8em;
-    color: #828290;
-  }
 `
 
 function Video ({ content, tags, thisDate }) {
@@ -101,9 +98,6 @@ function Video ({ content, tags, thisDate }) {
       break;
   }
 
-  let now = new Date(thisDate);
-  let displayDate = now.toLocaleDateString("nl-NL", {year:'numeric', month:'long', day:'numeric'})
-
   return (
   <SbEditable content={content}>
     <StyledContainer bordercolor={ borderColor }>
@@ -117,7 +111,7 @@ function Video ({ content, tags, thisDate }) {
             <div className="videoContainer">
                   <iframe src={"https://www.youtube.com/embed/" + content.youtube_video_id + "?start=13"} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
-            <p className="publishedDate">{displayDate}</p>
+            <DisplayDate thisDate={thisDate} />
             <p className="intro">{content.intro}</p>
             {render(content.long_text,
               {
