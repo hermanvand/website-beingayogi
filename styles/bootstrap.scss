@@ -29,7 +29,7 @@
         width:100%;
     }
 
-    a:link:no-button, a:visited:no-button {
+    a:link:not(.btn), a:visited:not(.btn) {
         background-color: white;
         color: black;
         border-bottom: 3px solid #01559A;
@@ -39,7 +39,7 @@
         display: inline-block;
     }
       
-    a:hover:no-button, a:active:no-button {
+    a:hover:not(.btn), a:active:not(.btn) {
         background-color: rgba(1, 85, 154, 0.5);
         color: white;
     }

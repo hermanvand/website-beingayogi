@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Image } from "react-bootstrap"
@@ -47,9 +47,6 @@ function Info ({ content }) {
               {(typeof content.intro_image !== 'undefined') &&
               <Image className="introImage" src={content.intro_image.filename} />}
               <p className="contentIntro">{content.intro}</p>
-            </div>
-
-            <div className="storyblok-richtext">
               {render(content.long_text,
                 {
                   defaultBlokResolver: (name, props) => (

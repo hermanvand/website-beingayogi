@@ -4,7 +4,7 @@ import DynamicIcon from '../DynamicIcon'
 
 const StyledContainer = styled(Container)`
   color: #828290;
-  .cat {
+  div.cat {
     display: inline-block;
     margin-bottom: 20px;
     padding: 20px;

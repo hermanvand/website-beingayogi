@@ -23,8 +23,10 @@ const StyledContainer = styled(Container)`
   // row 2
   .itemList {
     padding: 20px;
-  };
-
+  }
+  .featureItem {
+    margin-bottom: 10px;
+  }
 `
 
 function FeatureRow ({blok}) {
@@ -39,7 +41,7 @@ function FeatureRow ({blok}) {
               </Row>
               <Row className="itemList">
                   {blok.columns.map((nestedBlok) => (
-                      <Col key={nestedBlok._uid}>
+                      <Col className="featureItem" key={nestedBlok._uid}>
                           <DynamicComponent blok={nestedBlok} />
                       </Col>
                       )
