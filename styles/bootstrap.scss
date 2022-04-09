@@ -69,6 +69,14 @@ a.text:hover, a.text:active {
     color: white;
 }
 
+a.cat:link, a.cat:visited, a.cat:hover, a.cat:active {
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    display: inline-block;
+    border: 0px;
+}
+
 // custom bootstrap variables
 $font-family-sans-serif: Segoe UI, Roboto, sans-serif;
 $primary: #01559A;

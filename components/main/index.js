@@ -103,10 +103,10 @@ function Main ({ content }) {
             <div>
               <p>Alle inzichten</p>
               <ul>
-              <li className="fysiek"><a className="card" href="/main/bewandel-het-yoga-pad"><DynamicIcon className="my-icon" type="fysiek" /></a></li>
-              <li className="subtiel"><a className="card" href="/main/ontdek-jezelf"><DynamicIcon className="my-icon" type="subtiel" /></a></li>
-              <li className="causaal"><a className="card" href="/main/vergroot-je-bewustzijn"><DynamicIcon className="my-icon" type="causaal" /></a></li>
-              <li className="bewustzijn"><a className="card" href="/main/wees-een-met-het-leven"><DynamicIcon className="my-icon" type="bewustzijn" /></a></li>
+              <li className="fysiek"><a className="cat" href="/main/bewandel-het-yoga-pad"><DynamicIcon className="my-icon" type="fysiek" /></a></li>
+              <li className="subtiel"><a className="cat" href="/main/ontdek-jezelf"><DynamicIcon className="my-icon" type="subtiel" /></a></li>
+              <li className="causaal"><a className="cat" href="/main/vergroot-je-bewustzijn"><DynamicIcon className="my-icon" type="causaal" /></a></li>
+              <li className="bewustzijn"><a className="cat" href="/main/wees-een-met-het-leven"><DynamicIcon className="my-icon" type="bewustzijn" /></a></li>
               </ul>
             </div>
             <div className="related">
