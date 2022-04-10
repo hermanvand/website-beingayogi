@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Button } from "react-bootstrap"
 import DynamicIcon from '../DynamicIcon'
 
 const StyledContainer = styled(Container)`
@@ -19,6 +19,7 @@ function DisplayCategory ({category}) {
 
   let borderColor= "#BA9645"
   let iconUrl = "";
+  let mainPage = true;
   switch (category) {
     case "fysiek":
       iconUrl = "/main/bewandel-het-yoga-pad";
@@ -36,16 +37,24 @@ function DisplayCategory ({category}) {
       iconUrl = "/main/wees-een-met-het-leven";
       borderColor = "#E9AEC9";
       break;
+    case "inspiratie":
+      mainPage = false;
   }
 
   return (
     <StyledContainer bordercolor={ borderColor }>
         <Row>
             <Col>
-              <p>Geeft inzicht in</p>
+              { mainPage &&
+              <div><p>Geeft inzicht in</p>
               <div className="cat">
                 <a className="cat" href={iconUrl}><DynamicIcon type={category} /></a>
               </div>
+              </div>
+              }
+              { ! mainPage && 
+                <Button href={"/search?q=categorie%3A" + category} variant="secondary">Meer inspiratie</Button>
+              }
             </Col>
         </Row>
     </StyledContainer>
