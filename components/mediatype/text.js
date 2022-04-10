@@ -19,10 +19,6 @@ const StyledContainer = styled(Container)`
     width: 100%;
   };
   // col 2
-  .content > img, .content > p > img {
-    width: 100%;
-    max-width: 100%;
-  };
   // col 3
   .right {
     text-align: center;
@@ -45,6 +41,7 @@ function Text ({content, tags, thisDate}) {
               <h1>{content.title}</h1>
               <DisplayDate thisDate={thisDate} />
               <p className="contentIntro">{content.intro}</p>
+              <div className="storyblok-richtext">
               {render(content.long_text,
                 {
                   defaultBlokResolver: (name, props) => (
@@ -52,6 +49,7 @@ function Text ({content, tags, thisDate}) {
                   )
                 }
               )}
+              </div>
               <DisplayRelated related={content.related} />
           </Col>
           <Col sm={3} className="right">
