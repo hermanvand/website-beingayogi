@@ -9,20 +9,6 @@ import DisplayCategory from '../pages/displayCategory'
 import DisplayRelated from '../pages/displayRelated'
 
 const StyledContainer = styled(Container)`
-  // row
-  .contentBody {
-    margin-top: 30px;
-    padding: 0px;
-  };
-  // col 1
-  .left > img {
-    width: 100%;
-  };
-  // col 2
-  // col 3
-  .right {
-    text-align: center;
-  };
 `
 
 function Text ({content, tags, thisDate}) {
@@ -32,16 +18,15 @@ function Text ({content, tags, thisDate}) {
   
   return (
   <SbEditable content={content} tags={tags}>
-    <StyledContainer>
-        <Row className="contentBody">
-          <Col className="left">
+    <StyledContainer className="contentBody">
+        <Row>
+          <Col className="contentLeft">
             <img src={content.image}/>
           </Col>
           <Col sm={6} className="content">
               <h1>{content.title}</h1>
               <DisplayDate thisDate={thisDate} />
               <p className="contentIntro">{content.intro}</p>
-              <div className="storyblok-richtext">
               {render(content.long_text,
                 {
                   defaultBlokResolver: (name, props) => (
@@ -49,10 +34,9 @@ function Text ({content, tags, thisDate}) {
                   )
                 }
               )}
-              </div>
               <DisplayRelated related={content.related} />
           </Col>
-          <Col sm={3} className="right">
+          <Col sm={3} className="contentRight">
             <DisplayCategory category={content.categorie} />
             <DisplayTag tags={tags} />
           </Col>

@@ -27,7 +27,7 @@ function LinkCard ({blok}) {
                             <Card.Text>
                             {blok.description}
                             </Card.Text>
-                            <Button variant="primary" href={url}>{blok.linktext}</Button>
+                            <Button className="notContentLink" variant="primary" href={url}>{blok.linktext}</Button>
                         </Card.Body>
                     </Card>
                 </Col>

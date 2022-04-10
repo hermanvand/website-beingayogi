@@ -10,16 +10,23 @@
 // oranje:#B76352
 // rood:#793540
 
-// herman items :-)
-.contentIntro {
-    margin-top:20px;
-    margin-left:40px;
-    margin-right: 40px;
-    font-style: italic;
+// content items
+.contentBody {
+    margin-top: 30px;
 }
 
-// storyblok items
-.storyblok-richtext {
+.contentLeft {
+    text-align: center;
+    img {
+        width: 100%;
+    }
+}
+
+.contentRight {
+    text-align: center;
+}
+
+.content {
     blockquote {
         font-style: italic;
         padding: 20px;
@@ -29,7 +36,7 @@
         width:100%;
     }
 
-    a:link:not(.btn), a:visited:not(.btn) {
+    a:link:not(.notContentLink), a:visited:not(.notContentLink) {
         background-color: white;
         color: black;
         border-bottom: 2px solid #01559A;
@@ -39,34 +46,31 @@
         display: inline-block;
     }
       
-    a:hover:not(.btn), a:active:not(.btn) {
+    a:hover:not(.notContentLink), a:active:not(.notContentLink) {
         background-color: rgba(1, 85, 154, 0.5);
         color: white;
+    }
+
+    .contentIntro {
+        margin-top:20px;
+        margin-left:40px;
+        margin-right: 40px;
+        font-style: italic;
+    }
+    
+    .contentIntroImage {
+        float: right;
+        width: 200px;
+        padding: 10px;
     }
 }
 
 // html items
-
 h1,h2,h3 {
     color: #AE877D;
 };
 h4,h5,h6 {
     color: #BA9645;
-}
-
-a.text:link, a.text:visited {
-    background-color: white;
-    color: black;
-    border-bottom: 2px solid #01559A;
-    padding: 0px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}
-  
-a.text:hover, a.text:active {
-    background-color: rgba(1, 85, 154, 0.5);
-    color: white;
 }
 
 a.cat:link, a.cat:visited, a.cat:hover, a.cat:active {

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 
@@ -50,28 +50,26 @@ const StyledContainer = styled(Container)`
 function SearchResult({term, stories}) {
   //console.log(JSON.stringify(stories))
   return (
-  <SbEditable content={stories}>
-        <StyledContainer>
-          <Row>
-                <Col className="title">
-                    <p>Resultaten voor: {term}</p>
-                </Col>
-            </Row>
-            <Row>
-            {stories.map((story) => {
-                return (
-                        <Col className="item" key={story.content._uid} style={{backgroundImage: "url("+story.content.image+")"}} >
-                            <div>
-                            <a href={"/"+story.full_slug}>
-                               {story.content.title}
-                            </a>
-                            </div>
-                        </Col>
-                        )
-                    })}
-            </Row>
-        </StyledContainer>
-  </SbEditable>
+    <StyledContainer>
+      <Row>
+            <Col className="title">
+                <p>Resultaten voor: {term}</p>
+            </Col>
+        </Row>
+        <Row>
+        {stories.map((story) => {
+            return (
+                    <Col className="item" key={story.content._uid} style={{backgroundImage: "url("+story.content.image+")"}} >
+                        <div>
+                        <a href={"/"+story.full_slug}>
+                            {story.content.title}
+                        </a>
+                        </div>
+                    </Col>
+                    )
+                })}
+        </Row>
+    </StyledContainer>
   )
 }
 

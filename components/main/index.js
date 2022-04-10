@@ -7,23 +7,12 @@ import DynamicIcon from '../DynamicIcon'
 import DisplayRelated from '../pages/displayRelated'
 
 const StyledContainer = styled(Container)`
-  // row
-  margin-top: 30px;
-  padding: 0px;
-  // col 1
-  .left {
-    text-align: center;
-  }
   .cat {
     margin-bottom: 20px;
     padding: 20px;
   }
-  // col 2
-  .content {
-  }
-  // col 3
-  .right {
-    text-align: right;
+  .thisRight {
+    color: #828290;
     ul {
       list-style-type: none;
       margin: 0;
@@ -57,9 +46,9 @@ function Main ({ content }) {
 
   return (
   <SbEditable content={content}>
-    <StyledContainer>
+    <StyledContainer className="contentBody">
         <Row>
-          <Col sm={2} className="left">
+          <Col sm={2} className="contentLeft">
             <div className="cat">
               <DynamicIcon type={content.categorie} />
             </div>
@@ -71,20 +60,18 @@ function Main ({ content }) {
           <Col sm={8} className="content">
               <h1>{content.title}</h1>
 
-              <div className="storyblok-richtext">
-                {render(content.long_text,
-                  {
-                    defaultBlokResolver: (name, props) => (
-                      <DynamicComponentRendered component={name} blok={props} key={props._uid} />
-                    )
-                  }
-                )}
-              </div>
+              {render(content.long_text,
+                {
+                  defaultBlokResolver: (name, props) => (
+                    <DynamicComponentRendered component={name} blok={props} key={props._uid} />
+                  )
+                }
+              )}
 
               <DisplayRelated related={content.related} />
           </Col>
 
-          <Col sm={2} className="right">
+          <Col sm={2} className="contentRight thisRight">
             <p>Alle inzichten</p>
             <ul>
             <li className="fysiek"><a className="cat" href="/main/bewandel-het-yoga-pad"><DynamicIcon type="fysiek" /></a></li>

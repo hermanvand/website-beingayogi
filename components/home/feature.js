@@ -52,7 +52,7 @@ function Feature ({blok}) {
         <StyledContainer bordercolor={ borderColor }>
             <Row>
                 <Col>
-                    <a href={blok.link.cached_url} className="text-decoration-none text-reset">
+                    <a href={blok.link.cached_url} className="text-decoration-none text-reset notContentLink">
                     <DynamicIcon type={blok.icon} />
                     <p className="featureTitle">
                       {blok.name}

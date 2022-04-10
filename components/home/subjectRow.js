@@ -67,7 +67,7 @@ function SubjectRow({blok}) {
                             <OverlayTrigger
                               placement="bottom"
                               overlay={<Tooltip>{article.content.summary}</Tooltip>}>
-                              <a href={"/"+article.full_slug}>
+                              <a className="notContentLink" href={"/"+article.full_slug}>
                                 {article.content.title}
                               </a>
                             </OverlayTrigger>

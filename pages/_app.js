@@ -4,7 +4,6 @@ import '../styles/bootstrap.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAdjust, faInfo, faPlay, faSearch, faExternalLinkAlt, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 import { AppWrapper } from '../context';
-import link from 'next/link'
 
 // add icons
 library.add(faPlay)

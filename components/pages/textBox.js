@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 import { render } from "storyblok-rich-text-react-renderer"

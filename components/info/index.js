@@ -7,24 +7,10 @@ import DynamicComponent from '../DynamicComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyledContainer = styled(Container)`
-  // row
-  margin-top: 30px;
-  padding: 0px;
-  // col 1
-  .left {
-    text-align: center;
-  }
   .cat {
     margin-bottom: 20px;
     padding: 20px;
   }
-  // col 2
-  .introImage {
-    float: right;
-    width: 200px;
-    padding: 10px;
-  }
-  // col 3
 `
 
 function Info ({ content }) {
@@ -32,9 +18,9 @@ function Info ({ content }) {
 
   return (
   <SbEditable content={content}>
-    <StyledContainer className="text">
+    <StyledContainer className="contentBody">
         <Row>
-          <Col sm={2} className="left">
+          <Col sm={2} className="contentLeft">
           <div className="cat">
             <FontAwesomeIcon icon='info' size="4x"/>
           </div>
@@ -43,18 +29,16 @@ function Info ({ content }) {
           <Col sm={8} className="content">
             <h1>{content.title}</h1>
 
-            <div className="storyblok-richtext">
-              {(typeof content.intro_image !== 'undefined') &&
-              <Image className="introImage" src={content.intro_image.filename} />}
-              <p className="contentIntro">{content.intro}</p>
-              {render(content.long_text,
-                {
-                  defaultBlokResolver: (name, props) => (
-                    <DynamicComponentRendered component={name} blok={props} key={props._uid} />
-                  )
-                }
-              )}
-            </div>
+            {(typeof content.intro_image !== 'undefined') &&
+            <Image className="contentIntroImage" src={content.intro_image.filename} />}
+            <p className="contentIntro">{content.intro}</p>
+            {render(content.long_text,
+              {
+                defaultBlokResolver: (name, props) => (
+                  <DynamicComponentRendered component={name} blok={props} key={props._uid} />
+                )
+              }
+            )}
             
             {(typeof content.featurerow !== 'undefined') &&
             content.featurerow.map((nestedBlok) => (
@@ -62,7 +46,7 @@ function Info ({ content }) {
             ))}
           </Col>
           
-          <Col sm={2} className="right">
+          <Col sm={2} className="contentRight">
           </Col>
         </Row>
     </StyledContainer>

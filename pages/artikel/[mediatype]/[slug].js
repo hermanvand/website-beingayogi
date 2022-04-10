@@ -1,5 +1,4 @@
 import React from 'react'
-import { ListGroup } from 'react-bootstrap'
 import StoryblokService from '../../../adapters/storyblok-service'
 import Layout from "../../../components/layout/layout"
 import NotFound from '../../../components/mediatype/notfound'

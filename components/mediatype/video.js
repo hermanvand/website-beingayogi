@@ -9,12 +9,6 @@ import DisplayCategory from '../pages/displayCategory'
 import DisplayRelated from '../pages/displayRelated'
 
 const StyledContainer = styled(Container)`
-  // row
-  .contentBody {
-    margin-top: 30px;
-    padding: 0px;
-  }
-  // col1
   // video container
   .videoContainer {
     position: relative;
@@ -32,10 +26,6 @@ const StyledContainer = styled(Container)`
     width: 100%;
     height: 100%;
   }
-  // col2
-  .right {
-    text-align: center;
-  }
 `
 
 function Video ({ content, tags, thisDate }) {
@@ -45,15 +35,14 @@ function Video ({ content, tags, thisDate }) {
   
   return (
   <SbEditable content={content}>
-    <StyledContainer>
-        <Row className="contentBody">
+    <StyledContainer className="contentBody">
+        <Row>
           <Col className="content">
             <div className="videoContainer">
                   <iframe src={"https://www.youtube.com/embed/" + content.youtube_video_id + "?start=13"} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
             <DisplayDate thisDate={thisDate} />
             <p className="contentIntro">{content.intro}</p>
-            <div className="storyblok-richtext">
             {render(content.long_text,
               {
                 defaultBlokResolver: (name, props) => (
@@ -61,10 +50,9 @@ function Video ({ content, tags, thisDate }) {
                 )
               }
             )}
-            </div>
             <DisplayRelated related={content.related} />
           </Col>
-          <Col sm={3} className="right">
+          <Col sm={3} className="contentRight">
             <DisplayCategory category={content.categorie} />
             <DisplayTag tags={tags} />
           </Col>
