@@ -20,7 +20,7 @@ function DisplayRelated ({related}) {
         <Row>
             <Col>
               { related && related.length > 0 && <p><hr className="line"/>Heeft relatie met</p> }
-              { related.map((nestedBlok) => (
+              { related && related.map((nestedBlok) => (
                 <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
               ))}
             </Col>

@@ -21,7 +21,7 @@ function DisplayTag ({tags}) {
         <Row>
             <Col>
                 { tags && tags.length > 0 && <p><hr className="line"/>Is gelabeld als</p> }
-                { tags.map((tag) => (
+                { tags && tags.map((tag) => (
                   <Button className="tag" key={tag} href={"/search?q=tag:" + tag} variant="secondary">{tag}</Button>
                 ))}
             </Col>
