@@ -53,7 +53,7 @@ function DisplayCategory ({category}) {
               </div>
               }
               { ! mainPage && 
-                <Button href={"/search?q=inzicht%3A" + category} variant="secondary">Meer inspiratie</Button>
+                <Button href={"/search?q=inzicht%3A" + category} variant="primary">Artikelen over inspiratie</Button>
               }
             </Col>
         </Row>
