@@ -8,26 +8,28 @@ const StyledContainer = styled(Container)`
     margin: auto;
     margin-bottom: 10px;
   }
-  .tag {
+  .subject {
     margin-right:10px;
     margin-bottom:10px;
   }
 `
 
-function DisplayTag ({tags}) {
+function DisplaySubject ({subject}) {
   
   return (
     <StyledContainer>
         <Row>
             <Col>
-                { tags && tags.length > 0 && <p><hr className="line"/>Label</p> }
-                { tags && tags.map((tag) => (
-                  <Button className="tag" key={tag} href={"/search?q=label:" + tag} variant="secondary">{tag}</Button>
-                ))}
+                { subject && 
+                <div>
+                  <p><hr className="line"/>Onderwerp</p>
+                  <Button className="subject" href={"/search?q=onderwerp:" + subject} variant="success">{subject}</Button>
+                </div>
+                }
             </Col>
         </Row>
     </StyledContainer>
   )
 }
 
-export default DisplayTag
+export default DisplaySubject

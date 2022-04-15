@@ -5,6 +5,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DisplayDate from '../pages/displayDate'
 import DisplayTag from '../pages/displayTag'
+import DisplaySubject from '../pages/displaySubject'
 import DisplayCategory from '../pages/displayCategory'
 import DisplayRelated from '../pages/displayRelated'
 
@@ -38,6 +39,7 @@ function Text ({content, tags, thisDate}) {
           </Col>
           <Col sm={3} className="contentRight">
             <DisplayCategory category={content.categorie} />
+            <DisplaySubject subject={content.onderwerp} />
             <DisplayTag tags={tags} />
           </Col>
         </Row>

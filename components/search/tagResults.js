@@ -6,18 +6,20 @@ const StyledContainer = styled(Container)`
     margin-right:10px;
     margin-bottom:10px;
   }
+  .col {
+    margin-top:10px;
+  }
 `
 
-function TagResult({term, tags}) {
-  //console.log(JSON.stringify(term))
+function TagResult({tags}) {
   return (
     <StyledContainer>
         <Row>
           <Col>
-            <p> Er zijn geen resultaten gevonden. Probeer één van deze labels eens...</p>
+            <p> Probeer één van deze labels eens</p>
             { tags.map((tag) => {
                   return (
-                    <Button className="tag" key={tag.name} href={"/search?q=tag:" + tag.name} variant="secondary">{tag.name}</Button>
+                    <Button className="tag" key={tag.name} href={"/search?q=label:" + tag.name} variant="secondary">{tag.name}</Button>
                   )
                   })}
           </Col>

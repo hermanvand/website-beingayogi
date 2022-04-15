@@ -53,7 +53,7 @@ function Main ({ content }) {
               <DynamicIcon type={content.categorie} />
             </div>
             <p>
-              <Button href={"/search?q=categorie%3A" + content.categorie} variant="secondary">Artikelen over dit inzicht</Button>
+              <Button href={"/search?q=inzicht%3A" + content.categorie} variant="primary">Artikelen over dit inzicht</Button>
             </p>
           </Col>
 

@@ -4,6 +4,8 @@ import StoryblokService from '../../adapters/storyblok-service'
 import Layout from "../../components/layout/layout"
 import SearchResult from '../../components/search/searchResults'
 import TagResult from '../../components/search/tagResults'
+import SubjectResult from '../../components/search/subjectResults'
+import validator from 'validator';
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -13,7 +15,8 @@ class SearchPage extends React.Component {
     this.state = {
       stories: props.result.data.stories,
       term: props.term,
-      tags: props.tags.data.tags
+      tags: props.tags.data.tags,
+      subjects: props.subjects.data.datasource_entries
     }
   }
 
@@ -21,20 +24,26 @@ class SearchPage extends React.Component {
     StoryblokService.setQuery(query)
 
     let searchType = "term";
-    let term = query.q
+    let q = query.q
+
+    // validate input
+    var chars = 'a-zA-Z0-9_:\\-\\s';
+    let term = validator.whitelist(q, chars)
+    //console.log(q)
+    //console.log(term)
 
     // search by storyblok tags
     let tag = "";
-    if (term.startsWith("tag:")) {
+    if (term.startsWith("label:")) {
       searchType = "tag";
-      tag = term.substring(4);
+      tag = term.substring(6);
     }
 
     // search by own categorie or onderwerp
     let categorie = "";
-    if (term.startsWith("categorie:")) {
+    if (term.startsWith("inzicht:")) {
       searchType = "categorie";
-      categorie = term.substring(10);
+      categorie = term.substring(8);
     }
     let onderwerp = "";
     if (term.startsWith("onderwerp:")) {
@@ -71,15 +80,18 @@ class SearchPage extends React.Component {
         break;
     }
 
-    // also get tags
-    // note: these tags are not always used, this call should be somewhere else for performance
+    // also get subjects & tags
+    // note: these are not always used, this call should be somewhere else for performance
+    let subjects = await StoryblokService.get('cdn/datasource_entries', {
+      "datasource": "subjects"
+    })
     let tags = await StoryblokService.get('cdn/tags')
 
     // console.log(JSON.stringify(term))
     // console.log(JSON.stringify(res))
 
     return {
-      "term": term, "result": res, "tags": tags
+      "term": term, "result": res, "subjects": subjects, "tags": tags
     }
   }
 
@@ -90,15 +102,17 @@ class SearchPage extends React.Component {
   render() {
     const term = this.state.term
     const stories = this.state.stories
+    const subjects = this.state.subjects
     const tags = this.state.tags
 
     //console.log(JSON.stringify(tags))
+    //console.log(JSON.stringify(subjects))
 
     return (
       <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
-        <SearchResult term={term} stories={stories}>
-        </SearchResult>
-        {stories && stories == 0 && <TagResult term={term} tags={tags}></TagResult>}
+        <SearchResult term={term} stories={stories}></SearchResult>
+        <SubjectResult subjects={subjects}></SubjectResult>
+        {stories && stories == 0 && <TagResult tags={tags}></TagResult>}
       </Layout>
     )
   }

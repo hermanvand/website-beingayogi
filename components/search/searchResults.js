@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col} from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
   // row 1
@@ -45,6 +44,9 @@ const StyledContainer = styled(Container)`
     text-decoration: none;
     color: black;
   }
+  .noItem {
+    padding-bottom: 20px;
+  }
 `
 
 function SearchResult({term, stories}) {
@@ -53,11 +55,11 @@ function SearchResult({term, stories}) {
     <StyledContainer>
       <Row>
             <Col className="title">
-                <p>Resultaten voor: {term}</p>
+                <p>Artikelen voor zoekterm: {term}</p>
             </Col>
         </Row>
         <Row>
-        {stories.map((story) => {
+        {stories && stories.map((story) => {
             return (
                     <Col className="item" key={story.content._uid} style={{backgroundImage: "url("+story.content.image+")"}} >
                         <div>
@@ -68,6 +70,7 @@ function SearchResult({term, stories}) {
                     </Col>
                     )
                 })}
+        {stories && stories == 0 && <Col className="noItem">Er zijn geen artikelen gevonden.<br/></Col>}
         </Row>
     </StyledContainer>
   )
