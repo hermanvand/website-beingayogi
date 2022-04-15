@@ -63,6 +63,30 @@
         width: 200px;
         padding: 10px;
     }
+
+    ol {
+        padding-left: 4rem;
+    }
+    ol li::marker {
+        color: #BA9645;
+    }
+    ol li {
+        list-style-type: upper-roman;
+        list-style-position: outside;
+        padding-left: 20px;
+    }
+    ul li {
+        margin: 0;
+        padding-left: 60px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        //padding: 36px 0 36px 84px;
+        list-style: none;
+        background-image: url("/beingayogi-icon.png");
+        background-repeat: no-repeat;
+        background-position: left 20px;
+        background-size: 40px;
+    }
 }
 
 // html items
