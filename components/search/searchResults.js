@@ -44,9 +44,6 @@ const StyledContainer = styled(Container)`
     text-decoration: none;
     color: black;
   }
-  .noItem {
-    padding-bottom: 20px;
-  }
 `
 
 function SearchResult({term, stories}) {
@@ -55,7 +52,8 @@ function SearchResult({term, stories}) {
     <StyledContainer>
       <Row>
             <Col className="title">
-                <p>Artikelen voor zoekterm: {term}</p>
+              {stories && stories.length > 0 && <p>Artikelen voor zoekterm: {term}</p>}
+              {stories && stories.length == 0 && <p>Er zijn geen artikelen gevonden met zoekterm: {term}</p>}
             </Col>
         </Row>
         <Row>
@@ -70,7 +68,6 @@ function SearchResult({term, stories}) {
                     </Col>
                     )
                 })}
-        {stories && stories == 0 && <Col className="noItem">Er zijn geen artikelen gevonden.<br/></Col>}
         </Row>
     </StyledContainer>
   )

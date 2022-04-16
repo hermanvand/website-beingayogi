@@ -20,7 +20,6 @@ function DisplayTag ({tags}) {
     <StyledContainer>
         <Row>
             <Col>
-                { tags && tags.length > 0 && <p><hr className="line"/>Label</p> }
                 { tags && tags.map((tag) => (
                   <Button className="tag" key={tag} href={"/search?q=label:" + tag} variant="secondary">{tag}</Button>
                 ))}

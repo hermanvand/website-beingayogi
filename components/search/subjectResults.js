@@ -17,7 +17,7 @@ function SubjectResult({subjects}) {
         <Row>
           <Col>
               <p>Zoek artikelen over een andere onderwerp</p>
-              { subjects.map((subject) => {
+              { subjects && subjects.map((subject) => {
                     return (
                       <Button className="subject" key={subject.value} href={"/search?q=onderwerp:" + subject.value} variant="success">{subject.name}</Button>
                     )

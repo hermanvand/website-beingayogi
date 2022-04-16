@@ -46,7 +46,7 @@ function DisplayCategory ({category}) {
         <Row>
             <Col>
               { mainPage &&
-              <div><p>Geeft inzicht in</p>
+              <div><p>Bekijk inzicht</p>
               <div className="cat">
                 <a className="cat" href={iconUrl}><DynamicIcon type={category} /></a>
               </div>

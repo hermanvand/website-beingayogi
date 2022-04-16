@@ -16,8 +16,7 @@ function TagResult({tags}) {
     <StyledContainer>
         <Row>
           <Col>
-            <p> Probeer één van deze labels eens</p>
-            { tags.map((tag) => {
+            { tags && tags.map((tag) => {
                   return (
                     <Button className="tag" key={tag.name} href={"/search?q=label:" + tag.name} variant="secondary">{tag.name}</Button>
                   )
