@@ -6,12 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyledContainer = styled(Container)`
   // row
+  //height: 85vh;
   .teaser {
-    margin-top: 30px;
-    padding: 50px;
-    height: 85vh;
+    height: 0px;
+    margin-top: 20px;
+    padding-top: 0px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: ${(props) => props.hoogte}%;
     background-repeat: no-repeat;
     background-size: 100%;
+    background-position: center center;
     background-image: ${(props) => props.url};
   }
   // col
@@ -37,7 +42,7 @@ function Teaser({blok}) {
 
   return (
     <SbEditable content={blok}>
-        <StyledContainer url={"url("+blok.image.filename+")"}>
+        <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte}>
           <Row className="teaser">
             <Col>
               <h2 className='headline'>{blok.headline}</h2>

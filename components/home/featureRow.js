@@ -26,6 +26,7 @@ const StyledContainer = styled(Container)`
   }
   .featureItem {
     margin-bottom: 10px;
+    min-width: 150px;
   }
 `
 

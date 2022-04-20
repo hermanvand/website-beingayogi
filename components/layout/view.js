@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import {themes, ThemeContext} from '../../context/theme';
 
 const StyledDiv = styled.div`
-    padding-top: 10px;
-    padding-bottom: 10px;
     background-color: ${(props) => props.background};
     font-family: Verdana, Helvetica, sans-serif;
 `

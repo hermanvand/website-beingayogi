@@ -4,9 +4,9 @@ import SbEditable from 'storyblok-react'
 import { Container, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
+  padding: 20px;
   // row 1
   .title {
-    padding-top: 20px;
     padding-left: 0px;
     font-size: 1.2em;
     color: #AE877D;
