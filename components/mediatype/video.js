@@ -4,6 +4,7 @@ import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DisplayDate from '../pages/displayDate'
+import DisplayReadingTime from '../pages/displayReadingTime'
 import DisplayTag from '../pages/displayTag'
 import DisplaySubject from '../pages/displaySubject'
 import DisplayCategory from '../pages/displayCategory'
@@ -43,6 +44,7 @@ function Video ({ content, tags, thisDate }) {
                   <iframe src={"https://www.youtube.com/embed/" + content.youtube_video_id + "?start=13"} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
             <DisplayDate thisDate={thisDate} />
+            <DisplayReadingTime content={content.long_text} />
             <p className="contentIntro">{content.intro}</p>
             {render(content.long_text,
               {

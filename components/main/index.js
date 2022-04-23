@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicIcon from '../DynamicIcon'
 import DisplayRelated from '../pages/displayRelated'
+import DisplayReadingTime from '../pages/displayReadingTime'
 
 const StyledContainer = styled(Container)`
   .cat {
@@ -59,6 +60,7 @@ function Main ({ content }) {
 
           <Col sm={8} className="content">
               <h1>{content.title}</h1>
+              <DisplayReadingTime content={content.long_text} />
 
               {render(content.long_text,
                 {

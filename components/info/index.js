@@ -5,6 +5,7 @@ import { Container, Row, Col, Image } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicComponent from '../DynamicComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import DisplayReadingTime from '../pages/displayReadingTime'
 
 const StyledContainer = styled(Container)`
   .cat {
@@ -28,6 +29,7 @@ function Info ({ content }) {
 
           <Col sm={8} className="content">
             <h1>{content.title}</h1>
+            <DisplayReadingTime content={content.long_text} />
 
             {(typeof content.intro_image !== 'undefined') &&
             <Image className="contentIntroImage" src={content.intro_image.filename} />}

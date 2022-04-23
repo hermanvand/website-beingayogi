@@ -4,6 +4,7 @@ import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DisplayDate from '../pages/displayDate'
+import DisplayReadingTime from '../pages/displayReadingTime'
 import DisplayTag from '../pages/displayTag'
 import DisplaySubject from '../pages/displaySubject'
 import DisplayCategory from '../pages/displayCategory'
@@ -16,7 +17,7 @@ function Text ({content, tags, thisDate}) {
   //console.log(JSON.stringify(content))
   //console.log(JSON.stringify(tags))
   //console.log(JSON.stringify(thisDate))
-  
+     
   return (
   <SbEditable content={content} tags={tags}>
     <StyledContainer className="contentBody">
@@ -27,6 +28,7 @@ function Text ({content, tags, thisDate}) {
           <Col sm={6} className="content">
               <h1>{content.title}</h1>
               <DisplayDate thisDate={thisDate} />
+              <DisplayReadingTime content={content.long_text} />
               <p className="contentIntro">{content.intro}</p>
               {render(content.long_text,
                 {
