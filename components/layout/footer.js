@@ -16,13 +16,6 @@ const StyledContainer = styled(Container)`
     }   
 
     // col
-    .copyright {
-        position:relative;
-    }
-    .copyright > p {
-        position: absolute;
-        bottom: 0%;
-    }
     a {
         color: white;
     }
@@ -35,14 +28,15 @@ const StyledContainer = styled(Container)`
 function Footer(props) {
     return (
         <StyledContainer className={props.className}>
-            <Row className="fullWidth">
-                <Col className="copyright">
+            <Row className="fullWidth" xs={1} sm={4}>
+                <Col>
+                    <b>Over being a yogi</b>
                     <p>
-                    &copy; Bamboehuis, 2022
+                    Being a yogi is een online overzicht van yoga begrippen, verhalen en inzichten om jou te helpen yoga toe te passen en het leven te begrijpen.
                     </p>
                 </Col>
                <Col>
-                    Inzichten
+                    <b>Inzichten</b>
                     <ul>
                     <li><a href="/main/bewandel-het-yoga-pad">Bewandel het yoga pad</a></li>
                     <li><a href="/main/ontdek-jezelf">Ontdek jezelf</a></li>
@@ -51,7 +45,7 @@ function Footer(props) {
                     </ul>
                 </Col>
                 <Col>
-                    Informatie
+                    <b>Informatie</b>
                     <ul>
                     <li><a href="/info/overview">Over being a yogi</a></li>
                     <li><a href="/info/yoga">Yoga zoals het bedoeld is</a></li>
@@ -60,11 +54,7 @@ function Footer(props) {
                     </ul>
                 </Col>
                 <Col>
-                    Ga naar
-                    <ul>
-                    <li><a href="/">Beginpagina</a></li>
-                    <li><a href="/search?q=yoga">Zoeken</a></li>
-                    </ul>
+                    <p>Being a yogi is een initiatief van het <a href="https://bamboehuis.amsterdam">Bamboehuis</a>. &copy; 2022</p>
                 </Col>
                 </Row>
         </StyledContainer>

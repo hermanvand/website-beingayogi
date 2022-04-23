@@ -21,12 +21,26 @@ const StyledContainer = styled(Container)`
   }
   // col
   .headline {
+      margin-top: 10px;
       font-size: 3em;
       color: black;
   };
-  .description{
+  .description {
       font-size: 1.5em;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
+  };
+
+  //mobile
+  @media (max-width: 575.98px) {
+    .headline {
+      font-size: 1.5em;
+    }
+    .description {
+      font-size: 1em;
+    }
+    .fa-2x {
+      font-size: 1em;
+    }
   };
 `
 
