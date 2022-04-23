@@ -4,6 +4,7 @@ import FeatureRow from './home/featureRow.js'
 import SubjectRow from './home/subjectRow.js'
 import Teaser from './home/teaser.js'
 import Tagline from './home/tagline.js'
+import AndMore from './home/andMore.js'
 import LinkCard from './pages/linkCard'
 import TextBox from './pages/textBox'
 
@@ -13,6 +14,7 @@ const Components = {
   'featureRow': FeatureRow,
   'subjectRow': SubjectRow,
   'tagline': Tagline,
+  'andMore': AndMore,
   'linkCard': LinkCard,
   'textbox': TextBox
 }
