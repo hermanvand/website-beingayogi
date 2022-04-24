@@ -13,6 +13,9 @@ const StyledContainer = styled(Container)`
     border-bottom-color: ${(props) => props.bordercolor};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  .lineTop {
+    margin-bottom: 20px;
+  }
   };
 `
 
@@ -54,7 +57,7 @@ function DisplayCategory ({category}) {
               </div>
               }
               { ! mainPage && 
-                <Button href={"/search?q=inzicht%3A" + category} variant="primary">Artikelen over inspiratie</Button>
+                <div className="lineTop"><hr className="line"/><Button href={"/search?q=inzicht%3A" + category} variant="primary">Artikelen over inspiratie</Button></div>
               }
             </Col>
         </Row>
