@@ -15,9 +15,10 @@ const StyledContainer = styled(Container)`
   .thisRight {
     color: #828290;
     ul {
+      display: inline-block;
       list-style-type: none;
-      margin: 0;
       padding: 0;
+      max-width: 200px;
     }
     li {
       text-align: center;
@@ -74,7 +75,7 @@ function Main ({ content }) {
           </Col>
 
           <Col sm={2} className="contentRight thisRight">
-            <p>Alle inzichten</p>
+            <p><hr className="line"/>Alle inzichten</p>
             <ul>
             <li className="fysiek"><a className="cat" href="/main/bewandel-het-yoga-pad"><DynamicIcon type="fysiek" /></a></li>
             <li className="subtiel"><a className="cat" href="/main/ontdek-jezelf"><DynamicIcon type="subtiel" /></a></li>

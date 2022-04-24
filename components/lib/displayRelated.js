@@ -6,11 +6,6 @@ const StyledContainer = styled(Container)`
   margin-top:20px;
   text-align:center;
   color: #828290;
-  .line {
-    width: 150px;
-    margin: auto;
-    margin-bottom: 10px;
-  }
 `
 
 function DisplayRelated ({related}) {
@@ -19,7 +14,7 @@ function DisplayRelated ({related}) {
     <StyledContainer>
         <Row>
             <Col>
-              { related && related.length > 0 && <p><hr className="line"/>Lees een gerelateerd artikel</p> }
+              { related && related.length > 0 && <p><hr className="lineOn"/>Lees een gerelateerd artikel</p> }
               { related && related.map((nestedBlok) => (
                 <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
               ))}

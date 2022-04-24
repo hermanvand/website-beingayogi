@@ -105,6 +105,27 @@ a.cat:link, a.cat:visited, a.cat:hover, a.cat:active {
     border: 0px;
 }
 
+hr.lineOn {
+    width: 150px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+hr.line {
+    display: none;
+}
+
+//mobile
+@media (max-width: 575.98px) {
+    hr.line {
+        display: block;
+        width: 150px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+}
+
+
 // custom bootstrap variables
 $font-family-sans-serif: Segoe UI, Roboto, sans-serif;
 $primary: #01559A;

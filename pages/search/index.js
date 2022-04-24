@@ -1,4 +1,3 @@
-import { faTerminal } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import StoryblokService from '../../adapters/storyblok-service'
 import Layout from "../../components/layout/layout"
@@ -6,6 +5,7 @@ import SearchResult from '../../components/search/searchResults'
 import TagResult from '../../components/search/tagResults'
 import SubjectResult from '../../components/search/subjectResults'
 import validator from 'validator';
+import getCategoryText from "../../lib/categoryText.js"
 
 class SearchPage extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class SearchPage extends React.Component {
 
     this.state = {
       stories: props.result.data.stories,
+      display: props.display,
       term: props.term,
       tags: props.tags.data.tags,
       subjects: props.subjects.data.datasource_entries
@@ -23,32 +24,41 @@ class SearchPage extends React.Component {
   static async getInitialProps({ query }) {
     StoryblokService.setQuery(query)
 
-    let searchType = "term";
-    let q = query.q
-
     // validate input
+    let q = query.q
     var chars = 'a-zA-Z0-9_:\\-\\s';
     let term = validator.whitelist(q, chars)
     //console.log(q)
     //console.log(term)
 
+    // what to look for?
+    let searchType = "term";
+    let searchTerm = term;
+    let searchDisplay = "zoeken naar";
+
     // search by storyblok tags
     let tag = "";
     if (term.startsWith("label:")) {
-      searchType = "tag";
       tag = term.substring(6);
+      searchType = "tag";
+      searchTerm = tag;
+      searchDisplay = "het onderwerp";
     }
 
     // search by own categorie or onderwerp
     let categorie = "";
     if (term.startsWith("inzicht:")) {
-      searchType = "categorie";
       categorie = term.substring(8);
+      searchType = "categorie";
+      searchTerm = getCategoryText(categorie);
+      searchDisplay = "het inzicht";
     }
     let onderwerp = "";
     if (term.startsWith("onderwerp:")) {
-      searchType = "onderwerp";
       onderwerp = term.substring(10);
+      searchType = "onderwerp";
+      searchTerm = onderwerp;
+      searchDisplay = "het onderwerp";
     }
 
     // search for results
@@ -91,7 +101,7 @@ class SearchPage extends React.Component {
     // console.log(JSON.stringify(res))
 
     return {
-      "term": term, "result": res, "subjects": subjects, "tags": tags
+      "display": searchDisplay, "term": searchTerm, "result": res, "subjects": subjects, "tags": tags
     }
   }
 
@@ -100,6 +110,7 @@ class SearchPage extends React.Component {
   }
 
   render() {
+    const display = this.state.display
     const term = this.state.term
     const stories = this.state.stories
     const subjects = this.state.subjects
@@ -110,7 +121,7 @@ class SearchPage extends React.Component {
 
     return (
       <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
-        <SearchResult term={term} stories={stories}></SearchResult>
+        <SearchResult display={display} term={term} stories={stories}></SearchResult>
         <SubjectResult subjects={subjects}></SubjectResult>
         {stories && stories == 0 && <TagResult tags={tags}></TagResult>}
       </Layout>

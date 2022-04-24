@@ -3,11 +3,6 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
   color: #828290;
-  .line {
-    width: 150px;
-    margin: auto;
-    margin-bottom: 10px;
-  }
   .tag {
     margin-right:10px;
     margin-bottom:10px;

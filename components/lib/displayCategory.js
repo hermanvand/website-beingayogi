@@ -13,6 +13,7 @@ const StyledContainer = styled(Container)`
     border-bottom-color: ${(props) => props.bordercolor};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  };
 `
 
 function DisplayCategory ({category}) {
@@ -46,7 +47,7 @@ function DisplayCategory ({category}) {
         <Row>
             <Col>
               { mainPage &&
-              <div><p>Bekijk inzicht</p>
+              <div><hr className="line"/><p>Bekijk inzicht</p>
               <div className="cat">
                 <a className="cat" href={iconUrl}><DynamicIcon type={category} /></a>
               </div>

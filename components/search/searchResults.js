@@ -5,7 +5,6 @@ const StyledContainer = styled(Container)`
   // row 1
   .title {
     padding-top: 20px;
-    padding-left: 0px;
     font-size: 1.2em;
     color: #AE877D;
   };
@@ -15,14 +14,13 @@ const StyledContainer = styled(Container)`
       border-bottom-style: solid;
       border-bottom-width: 1px;
       border-bottom-color: #AE877D;
-      padding: 0px;
       width: 150px;
       min-width: 150px;
       height: 200px;
       min-height: 200px;
       flex-grow: 0;
-      margin-right: 30px;
-      margin-bottom: 30px;
+      margin-left: 20px;
+      margin-bottom: 20px;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -30,7 +28,8 @@ const StyledContainer = styled(Container)`
   };
   .item > div {
         position: absolute;
-        bottom: 0;
+        bottom: 0px;
+        left: 0px;
         width: 100%;
         text-align: center;
         background: rgba(255,255,255,0.6);
@@ -38,7 +37,8 @@ const StyledContainer = styled(Container)`
   .item > div > a {
     font-size: 1.2em;
     color: #AE877D;
-    bottom: 0;
+    bottom: 0px;
+    left: 0px;
   }
   .item > div > a:hover, a:active {
     text-decoration: none;
@@ -46,14 +46,14 @@ const StyledContainer = styled(Container)`
   }
 `
 
-function SearchResult({term, stories}) {
+function SearchResult({display, term, stories}) {
   //console.log(JSON.stringify(stories))
   return (
     <StyledContainer>
       <Row>
             <Col className="title">
-              {stories && stories.length > 0 && <p>Artikelen voor zoekterm: {term}</p>}
-              {stories && stories.length == 0 && <p>Er zijn geen artikelen gevonden met zoekterm: {term}</p>}
+              {stories && stories.length > 0 && <p>Artikelen over {display} <b>{term}</b></p>}
+              {stories && stories.length == 0 && <p>Er zijn geen artikelen gevonden.</p>}
             </Col>
         </Row>
         <Row>

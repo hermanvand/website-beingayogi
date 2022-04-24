@@ -3,11 +3,6 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
   color: #828290;
-  .line {
-    width: 150px;
-    margin: auto;
-    margin-bottom: 10px;
-  }
   .subject {
     margin-right:10px;
     margin-bottom:10px;
@@ -22,7 +17,7 @@ function DisplaySubject ({subject}) {
             <Col>
                 { subject && 
                 <div>
-                  <p><hr className="line"/>Zoek met onderwerp</p>
+                  <p><hr className="lineOn"/>Zoek met onderwerp</p>
                   <Button className="subject" href={"/search?q=onderwerp:" + subject} variant="success">{subject}</Button>
                 </div>
                 }
