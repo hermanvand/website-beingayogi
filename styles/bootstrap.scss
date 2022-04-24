@@ -45,10 +45,12 @@
         text-decoration: none;
         display: inline-block;
     }
-      
-    a:hover:not(.notContentLink), a:active:not(.notContentLink) {
-        background-color: rgba(1, 85, 154, 0.5);
-        color: white;
+    
+    @media (min-width: 576px) {
+        a:hover:not(.notContentLink), a:active:not(.notContentLink) {
+            background-color: rgba(1, 85, 154, 0.5);
+            color: white;
+        }
     }
 
     .contentIntro {

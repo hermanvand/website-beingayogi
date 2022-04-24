@@ -19,9 +19,12 @@ const StyledContainer = styled(Container)`
     a {
         color: white;
     }
-    a:hover {
-        color: black;
-        text-decoration: none;
+    //NOT mobile
+    @media (min-width: 576px) {
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
     }
 `
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Container, Row, Col} from "react-bootstrap"
+import { Container, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
   // row 1
@@ -10,41 +10,45 @@ const StyledContainer = styled(Container)`
   };
   // row 2
   .item {
-      position: relative;
-      border-bottom-style: solid;
-      border-bottom-width: 1px;
-      border-bottom-color: #AE877D;
-      width: 150px;
-      min-width: 150px;
-      height: 200px;
-      min-height: 200px;
-      flex-grow: 0;
-      margin-left: 20px;
-      margin-bottom: 20px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
-  };
-  .item > div {
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        text-align: center;
-        background: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
   }
-  .item > div > a {
+  .itemBG {
+    position: relative;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #AE877D;
+    border-radius: 15px;
+    padding: 0px;
+    width: 150px;
+    min-width: 150px;
+    height: 200px;
+    min-height: 200px;
+    flex-grow: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+  };
+  .anchorBG {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(255,255,255,0.7);
+    border-radius: 15px;
+  }
+  a.subjectLink {
     font-size: 1.2em;
     color: #AE877D;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
   }
-  .item > div > a:hover, a:active {
-    text-decoration: none;
-    color: black;
-  }
-`
+  //NOT mobile
+  @media (min-width: 576px) {
+    a.subjectLink:hover, a.subjectLink:active {
+      text-decoration: none;
+      color: black;
+    }
+  }`
 
 function SearchResult({display, term, stories}) {
   //console.log(JSON.stringify(stories))
@@ -59,15 +63,21 @@ function SearchResult({display, term, stories}) {
         <Row>
         {stories && stories.map((story) => {
             return (
-                    <Col className="item" key={story.content._uid} style={{backgroundImage: "url("+story.content.image+")"}} >
-                        <div>
-                        <a href={"/"+story.full_slug}>
-                            {story.content.title}
-                        </a>
+              <Col className="item" key={story.content._uid} xs="auto">
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={<Tooltip>{story.content.summary}</Tooltip>}>
+                    <a className="subjectLink notContentLink" href={"/"+story.full_slug}>
+                      <div className="itemBG" style={{backgroundImage: "url("+story.content.image+")"}}>
+                        <div className="anchorBG">
+                          {story.content.title}
                         </div>
-                    </Col>
-                    )
-                })}
+                      </div>
+                    </a>
+                </OverlayTrigger>
+              </Col>
+            )
+        })}
         </Row>
     </StyledContainer>
   )
