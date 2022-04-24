@@ -5,7 +5,7 @@ import { Container, Row, Col, Image } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicComponent from '../DynamicComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import DisplayReadingTime from '../pages/displayReadingTime'
+import DisplayReadingTime from '../lib/displayReadingTime'
 
 const StyledContainer = styled(Container)`
   .cat {

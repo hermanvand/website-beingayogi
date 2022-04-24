@@ -47,7 +47,7 @@ function Footer(props) {
                 <Col>
                     <b>Informatie</b>
                     <ul>
-                    <li><a href="/info/overview">Over being a yogi</a></li>
+                    <li><a href="/info/overview">Being a yogi leeswijzer</a></li>
                     <li><a href="/info/yoga">Yoga zoals het bedoeld is</a></li>
                     <li><a href="/info/wij">Over ons</a></li>
                     <li><a href="/info/visie">Onze visie</a></li>
@@ -55,6 +55,7 @@ function Footer(props) {
                 </Col>
                 <Col>
                     <p>Being a yogi is een initiatief van het <a href="https://bamboehuis.amsterdam">Bamboehuis</a>. &copy; 2022</p>
+                    <p><a href="/">Terug naar het begin</a></p>
                 </Col>
                 </Row>
         </StyledContainer>

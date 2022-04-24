@@ -47,7 +47,7 @@ function Header(props) {
                                 &nbsp; <FontAwesomeIcon icon='info' size="1x"/> &nbsp;
                             </Dropdown.Toggle>
                             <Dropdown.Menu align="end">
-                                <Dropdown.Item href="/info/overview">Being a Yogi</Dropdown.Item>
+                                <Dropdown.Item href="/info/overview">Being a yogi leeswijzer</Dropdown.Item>
                                 <Dropdown.Item href="/info/yoga">Yoga zoals het bedoeld is</Dropdown.Item>
                                 <Dropdown.Divider/>
                                 <Dropdown.Item href="/info/wij">Over ons</Dropdown.Item>

@@ -4,8 +4,8 @@ import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import DynamicComponentRendered from '../DynamicComponentRendered'
 import DynamicIcon from '../DynamicIcon'
-import DisplayRelated from '../pages/displayRelated'
-import DisplayReadingTime from '../pages/displayReadingTime'
+import DisplayRelated from '../lib/displayRelated'
+import DisplayReadingTime from '../lib/displayReadingTime'
 
 const StyledContainer = styled(Container)`
   .cat {
@@ -61,7 +61,7 @@ function Main ({ content }) {
           <Col sm={8} className="content">
               <h1>{content.title}</h1>
               <DisplayReadingTime content={content.long_text} />
-
+              <p></p>
               {render(content.long_text,
                 {
                   defaultBlokResolver: (name, props) => (

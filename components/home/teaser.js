@@ -6,16 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const StyledContainer = styled(Container)`
   // row
-  //height: 85vh;
   .teaser {
     height: 0px;
-    margin-top: 20px;
-    padding-top: 0px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-bottom: ${(props) => props.hoogte}%;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 90%;
     background-position: center center;
     background-image: ${(props) => props.url};
   }

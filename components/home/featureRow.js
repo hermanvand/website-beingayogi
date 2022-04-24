@@ -5,7 +5,6 @@ import DynamicComponent from '../DynamicComponent'
 
 const StyledContainer = styled(Container)`
   background-color: #AE877D;
-  margin-top: 20px;
   max-width:100%;
   // row 1
   .fullWidth {
@@ -20,7 +19,12 @@ const StyledContainer = styled(Container)`
     font-size: 1.2em;
     color: white;
   };
-  // row 2
+  .featureRowDescription {
+    padding-left: 0px;
+    font-size: 0.8em;
+    color: white;
+  };
+ // row 2
   .itemList {
     padding: 20px;
   }
@@ -38,6 +42,11 @@ function FeatureRow ({blok}) {
               <Row className="fullWidth">
                   <Col className="featureRowTitle">
                       <p>{blok.title}</p>
+                  </Col>
+              </Row>
+              <Row className="fullWidth">
+                  <Col className="featureRowDescription">
+                      <p>{blok.description}</p>
                   </Col>
               </Row>
               <Row className="itemList">

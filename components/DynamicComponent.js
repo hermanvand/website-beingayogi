@@ -5,6 +5,7 @@ import SubjectRow from './home/subjectRow.js'
 import Teaser from './home/teaser.js'
 import Tagline from './home/tagline.js'
 import AndMore from './home/andMore.js'
+import Introduction from './home/introduction.js'
 import LinkCard from './pages/linkCard'
 import TextBox from './pages/textBox'
 
@@ -15,6 +16,7 @@ const Components = {
   'subjectRow': SubjectRow,
   'tagline': Tagline,
   'andMore': AndMore,
+  'introduction': Introduction,
   'linkCard': LinkCard,
   'textbox': TextBox
 }
