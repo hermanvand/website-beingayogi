@@ -56,10 +56,10 @@ function Header(props) {
                 <Navbar.Collapse id="myNavbarCollapse">
                     <Nav className="ms-auto">
                         <NavDropdown className="myNavbarItem" title="Inzichten" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="/main/bewandel-het-yoga-pad">Bewandel het yoga pad</NavDropdown.Item>
-                            <NavDropdown.Item href="/main/ontdek-jezelf">Ontdek jezelf</NavDropdown.Item>
-                            <NavDropdown.Item href="/main/vergroot-je-bewustzijn">Vergroot je bewustzijn</NavDropdown.Item>
-                            <NavDropdown.Item href="/main/wees-een-met-het-leven">Wees één met het leven</NavDropdown.Item>
+                            <NavDropdown.Item href="/main/bewandel-het-yoga-pad">1. Bewandel het yoga pad</NavDropdown.Item>
+                            <NavDropdown.Item href="/main/ontdek-jezelf">2. Ontdek jezelf</NavDropdown.Item>
+                            <NavDropdown.Item href="/main/vergroot-je-bewustzijn">3. Vergroot je bewustzijn</NavDropdown.Item>
+                            <NavDropdown.Item href="/main/wees-een-met-het-leven">4. Wees één met het leven</NavDropdown.Item>
                         </NavDropdown>                        
                         <NavDropdown className="myNavbarItem" title="Over ons" id="collasible-nav-dropdown2">
                             <NavDropdown.Item href="/info/overview">Being a yogi leeswijzer</NavDropdown.Item>
