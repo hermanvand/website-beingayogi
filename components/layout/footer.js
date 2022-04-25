@@ -31,7 +31,7 @@ const StyledContainer = styled(Container)`
 function Footer(props) {
     return (
         <StyledContainer className={props.className}>
-            <Row className="fullWidth" xs={1} md={4}>
+            <Row className="fullWidth" xs={1} lg={4}>
                 <Col>
                     <b>Over being a yogi</b>
                     <p>

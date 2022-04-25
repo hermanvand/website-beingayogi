@@ -50,7 +50,7 @@ const StyledContainer = styled(Container)`
 function Header(props) {
     return (
         <StyledContainer className={props.className}>
-            <Navbar className="fullWidth" id="myNavbar" expand="md">
+            <Navbar className="fullWidth" id="myNavbar" expand="lg">
                 <Navbar.Brand id="myNavbarBrand" href="/"><img src="/beingayogi-logo.png" height="80px"/></Navbar.Brand>
                 <Navbar.Toggle id="myNavbarToggle" aria-controls="myNavbarCollapse" />
                 <Navbar.Collapse id="myNavbarCollapse">
@@ -61,6 +61,24 @@ function Header(props) {
                             <NavDropdown.Item href="/main/vergroot-je-bewustzijn">3. Vergroot je bewustzijn</NavDropdown.Item>
                             <NavDropdown.Item href="/main/wees-een-met-het-leven">4. Wees één met het leven</NavDropdown.Item>
                         </NavDropdown>                        
+                        <NavDropdown className="myNavbarItem" title="Artikelen" id="collasible-nav-dropdown3">
+                            <NavDropdown.Item href="search?q=onderwerp:balans">Balans</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:houdingen">Houdingen</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:body">Body</NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item href="search?q=onderwerp:energie">Energie</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:aandacht">Aandacht</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:mind">Mind</NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item href="search?q=onderwerp:meditatie">Meditatie</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:persoonlijk">Persoonlijk bewustzijn</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:soul">Soul</NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item href="search?q=onderwerp:goddelijk">Goddelijk bewustzijn</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:zelfrealisatie">Zelfrealisatie</NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item href="search?q=onderwerp:dagelijksLeven">Uit het dagelijks leven</NavDropdown.Item>
+                        </NavDropdown>
                         <NavDropdown className="myNavbarItem" title="Over ons" id="collasible-nav-dropdown2">
                             <NavDropdown.Item href="/info/overview">Being a yogi leeswijzer</NavDropdown.Item>
                             <NavDropdown.Divider/>
@@ -68,7 +86,7 @@ function Header(props) {
                             <NavDropdown.Item href="/info/visie">Onze visie</NavDropdown.Item>
                             <NavDropdown.Item href="/info/yoga">Yoga zoals het bedoeld is</NavDropdown.Item>
                         </NavDropdown>
-                        <NavLink className="myNavbarItem" href="/">Contact</NavLink>
+                        <NavLink className="myNavbarItem" href="/contact">Contact</NavLink>
                         <Container id="myNavbarContainer" className="myNavbarItem">
                             <Search/>
                         </Container>

@@ -1,6 +1,10 @@
 Over component en state & het gebruik van function / const vs class
 
 - Een component is altijd een function. Dat is makkelijker lezen. De function wordt met export geexporteerd. Export staat altijd onderaan de pagina.
-- Je kunt wel const gebruiken om variabelen te declareren, die binnen het component gerbuikt worden, maar die exporteren we dus niet.
+- Je kunt wel const gebruiken om variabelen te declareren, die binnen het component gebruikt worden, maar die exporteren we dus niet.
 - Soms heeft een component 'state' nodig. Dat gaat niet met een function, dus dan maak je een class. Een class heeft een constructor met daarin de state en vaak een method die ervoor zorgt dat de state verandert. Bijvoorbeeld het ophalen van data met een api call
 Soms heeft een hele boom van componenten 'dezelfde state' nodig. Gebruik dan ook een class en dan gebruik je ook 'context'. Een context heeft een provider en een consumer. Een goed voorbeeld is een theme. Die geldt voor alle componenten in een boom.
+
+Hoe werkt dat in de praktijk
+- probeer van alles componenten te maken. Ook als je een stuk logica wil verplaatsen, omdat je het vaker hergebruikt.
+- componenten hoeven niet ook componenten in storyblok te zijn. Neem bijvoorbeeld DisplayDate of DisplayReadingTime dat zijn componenten met een eigen stukje logica. Zulke componenten staan in /lib
