@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Container, Dropdown, Navbar, Nav } from "react-bootstrap"
+import { Container, Dropdown, Navbar, Nav, NavDropdown, NavLink } from "react-bootstrap"
 import ThemeButton from '../navigation/themeButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Search from '../navigation/search'
@@ -19,7 +19,13 @@ const StyledContainer = styled(Container)`
         margin-right: 0px;
     }
     #myNavbarBrand {
-        padding-left: 20px;
+        margin-left: 20px;
+    }
+    .myNavbarItem {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 `
 
@@ -32,31 +38,29 @@ const StyledContainer = styled(Container)`
 function Header(props) {
     return (
         <StyledContainer className={props.className}>
-            <Navbar className="fullWidth" id="myNavbar" expand="lg">
+            <Navbar className="fullWidth" id="myNavbar" expand="sm">
                 <Navbar.Brand id="myNavbarBrand" href="/"><img src="/beingayogi-logo.png" height="80px"/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Container className="d-flex justify-content-end">
-                    <Nav className="flex-row-reverse">
-                        <Container className="w-auto">
-                        <Search />
-                        </Container>
-                        <Container className="w-auto">
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                &nbsp; <FontAwesomeIcon icon='info' size="1x"/> &nbsp;
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu align="end">
-                                <Dropdown.Item href="/info/overview">Being a yogi leeswijzer</Dropdown.Item>
-                                <Dropdown.Item href="/info/yoga">Yoga zoals het bedoeld is</Dropdown.Item>
-                                <Dropdown.Divider/>
-                                <Dropdown.Item href="/info/wij">Over ons</Dropdown.Item>
-                                <Dropdown.Item href="/info/visie">Onze visie</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                    <Nav className="ms-auto">
+                        <NavDropdown className="myNavbarItem" title="Inzichten" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="/main/bewandel-het-yoga-pad">Bewandel het yoga pad</NavDropdown.Item>
+                            <NavDropdown.Item href="/main/ontdek-jezelf">Ontdek jezelf</NavDropdown.Item>
+                            <NavDropdown.Item href="/main/vergroot-je-bewustzijn">Vergroot je bewustzijn</NavDropdown.Item>
+                            <NavDropdown.Item href="/main/wees-een-met-het-leven">Wees één met het leven</NavDropdown.Item>
+                        </NavDropdown>                        
+                        <NavDropdown className="myNavbarItem" title="Over ons" id="collasible-nav-dropdown2">
+                            <NavDropdown.Item href="/info/overview">Being a yogi leeswijzer</NavDropdown.Item>
+                            <NavDropdown.Divider/>
+                            <NavDropdown.Item href="/info/wij">Wie zijn wij</NavDropdown.Item>
+                            <NavDropdown.Item href="/info/visie">Onze visie</NavDropdown.Item>
+                            <NavDropdown.Item href="/info/yoga">Yoga zoals het bedoeld is</NavDropdown.Item>
+                        </NavDropdown>
+                        <NavLink className="myNavbarItem" href="/">Contact</NavLink>
+                        <Container className="myNavbarItem">
+                            <Search/>
                         </Container>
                     </Nav>
-                    </Container>
                 </Navbar.Collapse>
             </Navbar>
         </StyledContainer>
