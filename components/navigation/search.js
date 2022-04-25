@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Form, FormControl, Button } from "react-bootstrap"
 
-function Search (props) {
+function Search () {
     return (
         <Form className="d-flex" action="/search" method="get">
             <FormControl
             type="search"
-            placeholder="Zoeken"
+            placeholder="Zoek een artikel"
             className="me-2"
             aria-label="Search"
             name="q"
