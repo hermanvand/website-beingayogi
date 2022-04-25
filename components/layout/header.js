@@ -77,7 +77,7 @@ function Header(props) {
                             <NavDropdown.Item href="search?q=onderwerp:goddelijk">Goddelijk bewustzijn</NavDropdown.Item>
                             <NavDropdown.Item href="search?q=onderwerp:zelfrealisatie">Zelfrealisatie</NavDropdown.Item>
                             <NavDropdown.Divider/>
-                            <NavDropdown.Item href="search?q=onderwerp:dagelijksLeven">Uit het dagelijks leven</NavDropdown.Item>
+                            <NavDropdown.Item href="search?q=onderwerp:leven">Uit het dagelijks leven</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown className="myNavbarItem" title="Over ons" id="collasible-nav-dropdown2">
                             <NavDropdown.Item href="/info/overview">Being a yogi leeswijzer</NavDropdown.Item>
