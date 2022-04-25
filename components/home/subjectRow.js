@@ -12,6 +12,14 @@ const StyledContainer = styled(Container)`
     color: #AE877D;
   };
   // row 2
+  // hide scrollbar
+  .scrollBox::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome browsers */
+  }
+  .scrollBox {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none;  /* mozilla */
+  }
   .item {
   }
   .itemBG {
@@ -70,7 +78,7 @@ function SubjectRow({blok}) {
               }
             </Col>
           </Row>
-          <Row className="flex-nowrap overflow-auto">
+          <Row className="flex-nowrap overflow-auto scrollBox">
           {blok.articleList.map((article) => {
             return (
               <Col className="item" key={article.content._uid} xs="auto">

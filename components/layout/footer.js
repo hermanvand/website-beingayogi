@@ -40,12 +40,12 @@ function Footer(props) {
                 </Col>
                <Col>
                     <b>Inzichten</b>
-                    <ul>
+                    <ol>
                     <li><a href="/main/bewandel-het-yoga-pad">Bewandel het yoga pad</a></li>
                     <li><a href="/main/ontdek-jezelf">Ontdek jezelf</a></li>
                     <li><a href="/main/vergroot-je-bewustzijn">Vergroot je bewustzijn</a></li>
                     <li><a href="/main/wees-een-met-het-leven">Wees één met het leven</a></li>
-                    </ul>
+                    </ol>
                 </Col>
                 <Col>
                     <b>Over ons</b>
