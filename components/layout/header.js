@@ -21,6 +21,18 @@ const StyledContainer = styled(Container)`
     #myNavbarBrand {
         margin-left: 20px;
     }
+    #myNavbarToggle {
+        margin-right: 20px;
+    }
+    #myNavbarCollapse {
+        //margin-right: 20px;
+    }
+    #myNavbarContainer {
+        margin-bottom: 20px;
+        padding-left: 0px;
+        padding-right: 10px;
+        max-width: 75%;
+    }
     .myNavbarItem {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -38,10 +50,10 @@ const StyledContainer = styled(Container)`
 function Header(props) {
     return (
         <StyledContainer className={props.className}>
-            <Navbar className="fullWidth" id="myNavbar" expand="sm">
+            <Navbar className="fullWidth" id="myNavbar" expand="md">
                 <Navbar.Brand id="myNavbarBrand" href="/"><img src="/beingayogi-logo.png" height="80px"/></Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Toggle id="myNavbarToggle" aria-controls="myNavbarCollapse" />
+                <Navbar.Collapse id="myNavbarCollapse">
                     <Nav className="ms-auto">
                         <NavDropdown className="myNavbarItem" title="Inzichten" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="/main/bewandel-het-yoga-pad">Bewandel het yoga pad</NavDropdown.Item>
@@ -57,7 +69,7 @@ function Header(props) {
                             <NavDropdown.Item href="/info/yoga">Yoga zoals het bedoeld is</NavDropdown.Item>
                         </NavDropdown>
                         <NavLink className="myNavbarItem" href="/">Contact</NavLink>
-                        <Container className="myNavbarItem">
+                        <Container id="myNavbarContainer" className="myNavbarItem">
                             <Search/>
                         </Container>
                     </Nav>
