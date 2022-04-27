@@ -14,7 +14,7 @@ function DisplayRelated ({related}) {
     <StyledContainer>
         <Row>
             <Col>
-              { related && related.length > 0 && <p><hr className="lineOn"/>Lees een gerelateerd artikel</p> }
+              { related && related.length > 0 && <div><hr className="lineOn"/><p>Lees een gerelateerd artikel</p></div> }
               { related && related.map((nestedBlok) => (
                 <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
               ))}

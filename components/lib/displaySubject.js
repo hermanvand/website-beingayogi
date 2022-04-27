@@ -17,7 +17,8 @@ function DisplaySubject ({subject}) {
             <Col>
                 { subject && 
                 <div>
-                  <p><hr className="lineOn"/>Zoek met onderwerp</p>
+                  <hr className="lineOn"/>
+                  <p>Zoek met onderwerp</p>
                   <Button className="subject" href={"/search?q=onderwerp:" + subject} variant="success">{subject}</Button>
                 </div>
                 }

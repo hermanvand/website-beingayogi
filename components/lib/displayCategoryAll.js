@@ -38,7 +38,8 @@ function DisplayCategoryAll ({thisDate}) {
     <StyledContainer>
         <Row>
           <Col>
-            <p><hr className="line"/>Alle inzichten</p>
+            <hr className="line"/>
+            <p>Alle inzichten</p>
             <ul>
             <li className="fysiek"><a className="cat" href="/main/bewandel-het-yoga-pad"><DynamicIcon type="fysiek" /></a></li>
             <li className="subtiel"><a className="cat" href="/main/ontdek-jezelf"><DynamicIcon type="subtiel" /></a></li>
