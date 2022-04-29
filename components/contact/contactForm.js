@@ -40,15 +40,23 @@ function ContactForm () {
 
     const handleSubmit = (event) => {
       const form = event.currentTarget;
-      event.preventDefault();
+
       if (form.checkValidity() === false) {
+        event.preventDefault();
         event.stopPropagation();
+        setValidated(true);
       }
       else {
         const formData = new FormData();
         Object.entries(control).forEach(([key, value]) => {
             formData.append(key, value);
         });
+
+        setShowToast(true);
+
+        /*
+        // USE THIS WHEN PAYING :-)
+        event.preventDefault();
 
         axios
             .post(
@@ -71,16 +79,17 @@ function ContactForm () {
                 //alert(JSON.stringify(error))
                 //console.log(error);
             });
+        */
+
       }
   
-      setValidated(true);
     };
   
     return (
         <StyledContainer>
             <Row>
                 <Col>        
-                    <Form id="myForm" action="/" method="post" noValidate validated={validated} onSubmit={handleSubmit}>
+                    <Form id="myForm" action="https://getform.io/f/a782df2c-bc0a-4279-a29d-6386d02c9ff7" method="post" noValidate validated={validated} onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formulier">
                             <Form.Control type="hidden" name="formulier" value={control.formulier} />
                         </Form.Group>
