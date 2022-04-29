@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 import { Container, Row, Col, Button, Form, Toast, ToastBody} from "react-bootstrap"
 
@@ -56,7 +57,8 @@ function ContactForm () {
                 {headers: {Accept: "application/json"}}
             )
             .then(function (response) {
-                setValidated(true);
+                //alert(JSON.stringify(response))
+                setValidated(false);
                 setControl({
                     formulier: "beingayogi-contact",
                     naam: "",
@@ -66,6 +68,7 @@ function ContactForm () {
                 setShowToast(true);
             })
             .catch(function (error) {
+                //alert(JSON.stringify(error))
                 //console.log(error);
             });
       }
