@@ -87,6 +87,7 @@ function Header(props) {
                             <NavDropdown.Item href="/info/yoga">Yoga zoals het bedoeld is</NavDropdown.Item>
                         </NavDropdown>
                         <NavLink className="myNavbarItem" href="/contact">Contact</NavLink>
+                        <NavLink className="myNavbarItem" href="/app">APP</NavLink>
                         <Container id="myNavbarContainer" className="myNavbarItem">
                             <Search/>
                         </Container>

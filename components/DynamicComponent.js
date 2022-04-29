@@ -8,6 +8,7 @@ import AndMore from './home/andMore.js'
 import Introduction from './home/introduction.js'
 import LinkCard from './pages/linkCard'
 import TextBox from './pages/textBox'
+import Highlight from './pages/highlight'
 
 const Components = {
   'teaser': Teaser,
@@ -18,7 +19,8 @@ const Components = {
   'andMore': AndMore,
   'introduction': Introduction,
   'linkCard': LinkCard,
-  'textbox': TextBox
+  'textbox': TextBox,
+  'highlight': Highlight
 }
 
 function DynamicComponent ({blok}) {
