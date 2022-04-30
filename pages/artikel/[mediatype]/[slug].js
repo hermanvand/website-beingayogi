@@ -1,9 +1,9 @@
 import React from 'react'
 import StoryblokService from '../../../adapters/storyblok-service'
 import Layout from "../../../components/layout/layout"
-import NotFound from '../../../components/mediatype/notfound'
-import Text from '../../../components/mediatype/text'
-import Video from '../../../components/mediatype/video'
+import NotFound from '../../../components/pages/mediatype/notfound'
+import Text from '../../../components/pages/mediatype/text'
+import Video from '../../../components/pages/mediatype/video'
 
 class ArticlePage extends React.Component {
   constructor(props) {

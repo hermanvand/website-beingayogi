@@ -1,7 +1,7 @@
 import React from 'react'
 import StoryblokService from '../../adapters/storyblok-service'
 import Layout from "../../components/layout/layout"
-import Contact from '../../components/contact'
+import Contact from '../../components/pages/contact'
 
 class ContactPage extends React.Component {
   constructor(props) {

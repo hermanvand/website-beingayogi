@@ -1,9 +1,9 @@
 import React from 'react'
 import StoryblokService from '../../adapters/storyblok-service'
 import Layout from "../../components/layout/layout"
-import SearchResult from '../../components/search/searchResults'
-import TagResult from '../../components/search/tagResults'
-import SubjectResult from '../../components/search/subjectResults'
+import SearchResult from '../../components/pages/search/searchResults'
+import TagResult from '../../components/pages/search/tagResults'
+import SubjectResult from '../../components/pages/search/subjectResults'
 import validator from 'validator';
 import getCategoryText from "../../lib/categoryText.js"
 

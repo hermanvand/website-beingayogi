@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
-import DynamicIcon from '../DynamicIcon'
+import DynamicIcon from '../../DynamicIcon'
 
 // geel:#BA9645
 // oranje:#B76352

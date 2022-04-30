@@ -1,7 +1,7 @@
 import React from 'react'
 import StoryblokService from '../../adapters/storyblok-service'
 import Layout from "../../components/layout/layout"
-import Main from '../../components/main/index'
+import Main from '../../components/pages/main/index'
 
 class mainPage extends React.Component {
   constructor(props) {

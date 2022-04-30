@@ -1,8 +1,6 @@
 import styled from 'styled-components'
-import { Container, Dropdown, Navbar, Nav, NavDropdown, NavLink } from "react-bootstrap"
-import ThemeButton from '../navigation/themeButton'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Search from '../navigation/search'
+import { Container, Navbar, Nav, NavDropdown, NavLink } from "react-bootstrap"
+import Search from '../forms/searchForm'
 
 const StyledContainer = styled(Container)`
     /* ral 9010 */

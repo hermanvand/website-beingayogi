@@ -1,7 +1,7 @@
 import React from 'react'
 import StoryblokService from '../../adapters/storyblok-service'
 import Layout from "../../components/layout/layout"
-import Info from '../../components/info/index'
+import Info from '../../components/pages/info/index'
 
 class InfoPage extends React.Component {
   constructor(props) {

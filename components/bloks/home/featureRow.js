@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
-import DynamicComponent from '../DynamicComponent'
+import DynamicComponent from '../../DynamicComponent'
 
 const StyledContainer = styled(Container)`
   background-color: #AE877D;

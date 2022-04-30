@@ -1,9 +1,9 @@
 import React from 'react'
-import StoryblokService from '../../adapters/storyblok-service'
-import DynamicPage from '../../components/DynamicPage'
-import Layout from "../../components/layout/layout"
+import StoryblokService from '../adapters/storyblok-service'
+import DynamicPage from '../components/DynamicPage'
+import Layout from "../components/layout/layout"
 
-class AppPage extends React.Component {
+class DynamicSlug extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,7 +14,7 @@ class AppPage extends React.Component {
   static async getInitialProps({ query }) {
     StoryblokService.setQuery(query)
 
-    let res = await StoryblokService.get('cdn/stories/app', {
+    let res = await StoryblokService.get('cdn/stories/'+query.slug, {
     })
 
     return {
@@ -37,4 +37,4 @@ class AppPage extends React.Component {
   }
 }
 
-export default AppPage
+export default DynamicSlug

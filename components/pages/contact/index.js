@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Image} from "react-bootstrap"
-import ContactForm from './contactForm'
-import DisplayCategoryAll from '../lib/displayCategoryAll'
+import ContactForm from '../../forms/contactForm'
+import DisplayCategoryAll from '../../lib/displayCategoryAll'
 
 const StyledContainer = styled(Container)`
  .stayInTouchIcon {

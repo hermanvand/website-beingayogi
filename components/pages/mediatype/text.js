@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col } from "react-bootstrap"
-import DynamicComponentRendered from '../DynamicComponentRendered'
-import DisplayDate from '../lib/displayDate'
-import DisplayReadingTime from '../lib/displayReadingTime'
-import DisplayTag from '../lib/displayTag'
-import DisplaySubject from '../lib/displaySubject'
-import DisplayCategory from '../lib/displayCategory'
-import DisplayRelated from '../lib/displayRelated'
+import DynamicComponentRendered from '../../DynamicComponentRendered'
+import DisplayDate from '../../lib/displayDate'
+import DisplayReadingTime from '../../lib/displayReadingTime'
+import DisplayTag from '../../lib/displayTag'
+import DisplaySubject from '../../lib/displaySubject'
+import DisplayCategory from '../../lib/displayCategory'
+import DisplayRelated from '../../lib/displayRelated'
 
 const StyledContainer = styled(Container)`
 `
