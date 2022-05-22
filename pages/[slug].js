@@ -2,6 +2,8 @@ import React from 'react'
 import StoryblokService from '../adapters/storyblok-service'
 import DynamicPage from '../components/DynamicPage'
 import Layout from "../components/layout/layout"
+import NotFound from "../components/pages/notFound"
+import validator from 'validator';
 
 class DynamicSlug extends React.Component {
   constructor(props) {
@@ -12,11 +14,21 @@ class DynamicSlug extends React.Component {
   }
 
   static async getInitialProps({ query }) {
-    StoryblokService.setQuery(query)
+    // console.log(JSON.stringify(query))
+    // var chars = 'a-zA-Z0-9_.~:\\-\\s';
+    // query.slug = validator.whitelist(query.slug, chars)
 
-    let res = await StoryblokService.get('cdn/stories/'+query.slug, {
-    })
-
+    let res = {};
+    try {
+      StoryblokService.setQuery(query)
+      res = await StoryblokService.get('cdn/stories/'+query.slug, {
+      })
+    }
+    catch(error) {
+        // log the error
+        //console.log("ERROR!!!")
+        res = {"data":{"story":{"content":"not found","title":"not found","description":"not found"}}}
+    }
     return {
       res
     }
@@ -28,10 +40,14 @@ class DynamicSlug extends React.Component {
 
   render() {
     const contentOfStory = this.state.story.content
+    let loadPage = <DynamicPage content={contentOfStory} />
+    if (contentOfStory == "not found") {
+      loadPage = <NotFound></NotFound>
+    }
 
     return (
       <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
-        <DynamicPage content={contentOfStory} />
+        {loadPage}
       </Layout>
     )
   }

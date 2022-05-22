@@ -2,6 +2,7 @@ import React from 'react'
 import StoryblokService from '../../adapters/storyblok-service'
 import Layout from "../../components/layout/layout"
 import Info from '../../components/pages/info/index'
+import NotFound from '../../components/pages/notFound'
 
 class InfoPage extends React.Component {
   constructor(props) {
@@ -12,14 +13,18 @@ class InfoPage extends React.Component {
   }
 
   static async getInitialProps({ query }) {
-
-    StoryblokService.setQuery(query)
-
-    let res = await StoryblokService.get('cdn/stories/info/'+query.slug, {
-      "resolve_relations": "subjectRow.articleList"
-    })
-    //let res = await StoryblokService.get('cdn/stories?filter_query[onderwerp][is]=houdingen', {})
-
+    let res = {};
+    try {
+      StoryblokService.setQuery(query)
+      res = await StoryblokService.get('cdn/stories/info/'+query.slug, {
+        "resolve_relations": "subjectRow.articleList"
+      })
+    }
+    catch(error) {
+        // log the error
+        //console.log("ERROR!!!")
+        res = {"data":{"story":{"content":"not found","title":"not found","description":"not found"}}}
+    }
     return {
       res
     }
@@ -31,10 +36,14 @@ class InfoPage extends React.Component {
 
   render() {
     const contentOfStory = this.state.story.content
+    let loadPage = <Info content={contentOfStory} />
+    if (contentOfStory == "not found") {
+      loadPage = <NotFound></NotFound>
+    }
 
     return (
       <Layout title={contentOfStory.title} description={contentOfStory.intro}>
-        <Info content={contentOfStory} />
+        {loadPage}
       </Layout>
     )
   }

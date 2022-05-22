@@ -26,7 +26,7 @@ class SearchPage extends React.Component {
 
     // validate input
     let q = query.q
-    var chars = 'a-zA-Z0-9_:\\-\\s';
+    var chars = 'a-zA-Z0-9_.~:\\-\\s';
     let term = validator.whitelist(q, chars)
     //console.log(q)
     //console.log(term)

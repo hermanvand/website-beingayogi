@@ -1,9 +1,9 @@
 import React from 'react'
 import StoryblokService from '../../../adapters/storyblok-service'
 import Layout from "../../../components/layout/layout"
-import NotFound from '../../../components/pages/mediatype/notfound'
 import Text from '../../../components/pages/mediatype/text'
 import Video from '../../../components/pages/mediatype/video'
+import NotFound from '../../../components/pages/notFound'
 
 class ArticlePage extends React.Component {
   constructor(props) {
@@ -14,14 +14,18 @@ class ArticlePage extends React.Component {
   }
 
   static async getInitialProps({ query }) {
-
-    StoryblokService.setQuery(query)
-
-    let res = await StoryblokService.get('cdn/stories/artikel/'+query.mediatype+'/'+query.slug, {
-      "resolve_relations": "subjectRow.articleList"
-    })
-    //let res = await StoryblokService.get('cdn/stories?filter_query[onderwerp][is]=houdingen', {})
-
+    let res = {};
+    try {
+      StoryblokService.setQuery(query)
+      res = await StoryblokService.get('cdn/stories/artikel/'+query.mediatype+'/'+query.slug, {
+        "resolve_relations": "subjectRow.articleList"
+      })
+    }
+    catch(error) {
+        // log the error
+        //console.log("ERROR!!!")
+        res = {"data":{"story":{"content":"not found","title":"not found","description":"not found"}}}
+    }
     return {
       res
     }
@@ -33,25 +37,31 @@ class ArticlePage extends React.Component {
 
   render() {
     const contentOfStory = this.state.story.content
-    const tagList = this.state.story.tag_list
-    const thisDate = this.state.story.created_at
 
-    let mediaTypePage
-    switch (contentOfStory.component) {
-      case "textPage":
-        mediaTypePage = <Text content={contentOfStory} tags={tagList} thisDate={thisDate}/>
-        break;
-      case "videoPage":
-        mediaTypePage = <Video content={contentOfStory}  tags={tagList} thisDate={thisDate}/>
-        break;
-      default:
-        mediaTypePage = <NotFound content={contentOfStory}  tags={tagList}/>
-        break;
+    let loadPage
+    if (contentOfStory == "not found") {
+      loadPage = <NotFound></NotFound>
     }
+    else {
+      const tagList = this.state.story.tag_list
+      const thisDate = this.state.story.created_at
+
+      switch (contentOfStory.component) {
+        case "textPage":
+          loadPage = <Text content={contentOfStory} tags={tagList} thisDate={thisDate}/>
+          break;
+        case "videoPage":
+          loadPage = <Video content={contentOfStory}  tags={tagList} thisDate={thisDate}/>
+          break;
+        default:
+          loadPage = <NotFound/>
+          break;
+      }
+  }
 
     return (
       <Layout title={contentOfStory.title} description={contentOfStory.intro}>
-        {mediaTypePage}
+        {loadPage}
       </Layout>
     )
   }
