@@ -2,7 +2,7 @@ import StoryblokClient from 'storyblok-js-client'
 
 class StoryblokService {
   constructor() {
-    this.devMode = process.env.STORYBLOK_DEV_MODE
+    this.devMode = process.env.STORYBLOK_DEV_MODE === "true"
     this.token = process.env.STORYBLOK_API_KEY
     this.client = new StoryblokClient({
       accessToken: this.token,
