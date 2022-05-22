@@ -37,6 +37,7 @@ class ArticlePage extends React.Component {
 
   render() {
     const contentOfStory = this.state.story.content
+    //console.log(JSON.stringify(this.state.story))
 
     let loadPage
     if (contentOfStory == "not found") {
@@ -44,7 +45,8 @@ class ArticlePage extends React.Component {
     }
     else {
       const tagList = this.state.story.tag_list
-      const thisDate = this.state.story.created_at
+      //const thisDate = this.state.story.created_at
+      const thisDate = this.state.story.published_at
 
       switch (contentOfStory.component) {
         case "textPage":
