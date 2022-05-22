@@ -43,7 +43,7 @@ function Contact ({ content }) {
             )}
 
             <h5>Blijf op de hoogte van being a yogi</h5>
-            <a className="stayInTouchLink notContentLink" href="https://www.instagram.com/"><img className="stayInTouchIcon" src="/instagram.png" /></a>
+            <a className="stayInTouchLink notContentLink" href="https://www.instagram.com/_beingayogi_"><img className="stayInTouchIcon" src="/instagram.png" /></a>
 
             <h5>Volg het Bamboehuis</h5>
             <a className="notContentLink" href="https://www.instagram.com/bamboehuis.amsterdam/"><img className="stayInTouchIcon" src="/instagram.png" /></a>
