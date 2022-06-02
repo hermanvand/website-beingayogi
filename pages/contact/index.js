@@ -13,19 +13,6 @@ class ContactPage extends React.Component {
     }
   }
 
-  static async getInitialProps({ query }) {
-
-    StoryblokService.setQuery(query)
-
-    let res = await StoryblokService.get('cdn/stories/contact', {
-    })
-    //let res = await StoryblokService.get('cdn/stories?filter_query[onderwerp][is]=houdingen', {})
-
-    return {
-      res
-    }
-  }
-
   componentDidMount() {
     StoryblokService.initEditor(this)
   }
@@ -40,6 +27,20 @@ class ContactPage extends React.Component {
     )
   }
 
+}
+
+export async function getStaticProps() {
+
+  let res = await StoryblokService.get('cdn/stories/contact', {
+  })
+  //let res = await StoryblokService.get('cdn/stories?filter_query[onderwerp][is]=houdingen', {})
+
+  return {
+    props: { 
+      res: res
+    },
+    revalidate: 600
+  }
 }
 
 export default ContactPage

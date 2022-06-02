@@ -21,90 +21,6 @@ class SearchPage extends React.Component {
     }
   }
 
-  static async getInitialProps({ query }) {
-    StoryblokService.setQuery(query)
-
-    // validate input
-    let q = query.q
-    var chars = 'a-zA-Z0-9_.~:\\-\\s';
-    let term = validator.whitelist(q, chars)
-    //console.log(q)
-    //console.log(term)
-
-    // what to look for?
-    let searchType = "term";
-    let searchTerm = term;
-    let searchDisplay = "zoeken naar";
-
-    // search by storyblok tags
-    let tag = "";
-    if (term.startsWith("label:")) {
-      tag = term.substring(6);
-      searchType = "tag";
-      searchTerm = tag;
-      searchDisplay = "het onderwerp";
-    }
-
-    // search by own categorie or onderwerp
-    let categorie = "";
-    if (term.startsWith("inzicht:")) {
-      categorie = term.substring(8);
-      searchType = "categorie";
-      searchTerm = getCategoryText(categorie);
-      searchDisplay = "het inzicht";
-    }
-    let onderwerp = "";
-    if (term.startsWith("onderwerp:")) {
-      onderwerp = term.substring(10);
-      searchType = "onderwerp";
-      searchTerm = onderwerp;
-      searchDisplay = "het onderwerp";
-    }
-
-    // search for results
-    let res = "";
-    switch (searchType) {
-      case "term":
-        res = await StoryblokService.get('cdn/stories', {
-          "starts_with": "artikel",
-          "search_term": term
-        })
-        break;
-      case "tag":
-        res = await StoryblokService.get('cdn/stories', {
-          "starts_with": "artikel",
-          "with_tag" : tag
-        })
-        break;
-      case "categorie":
-        res = await StoryblokService.get('cdn/stories', {
-          "starts_with": "artikel",
-          "filter_query[categorie][in]" : categorie
-        })
-        break;
-      case "onderwerp":
-        res = await StoryblokService.get('cdn/stories', {
-          "starts_with": "artikel",
-          "filter_query[onderwerp][in]" : onderwerp
-        })
-        break;
-    }
-
-    // also get subjects & tags
-    // note: these are not always used, this call should be somewhere else for performance
-    let subjects = await StoryblokService.get('cdn/datasource_entries', {
-      "datasource": "subjects"
-    })
-    let tags = await StoryblokService.get('cdn/tags')
-
-    // console.log(JSON.stringify(term))
-    // console.log(JSON.stringify(res))
-
-    return {
-      "display": searchDisplay, "term": searchTerm, "result": res, "subjects": subjects, "tags": tags
-    }
-  }
-
   componentDidMount() {
     StoryblokService.initEditor(this)
   }
@@ -126,6 +42,95 @@ class SearchPage extends React.Component {
         {stories && stories == 0 && <TagResult tags={tags}></TagResult>}
       </Layout>
     )
+  }
+}
+
+export async function getServerSideProps({ query }) {
+
+  // validate input
+  let q = query.q
+  var chars = 'a-zA-Z0-9_.~:\\-\\s';
+  let term = validator.whitelist(q, chars)
+  //console.log(q)
+  //console.log(term)
+
+  // what to look for?
+  let searchType = "term";
+  let searchTerm = term;
+  let searchDisplay = "zoeken naar";
+
+  // search by storyblok tags
+  let tag = "";
+  if (term.startsWith("label:")) {
+    tag = term.substring(6);
+    searchType = "tag";
+    searchTerm = tag;
+    searchDisplay = "het onderwerp";
+  }
+
+  // search by own categorie or onderwerp
+  let categorie = "";
+  if (term.startsWith("inzicht:")) {
+    categorie = term.substring(8);
+    searchType = "categorie";
+    searchTerm = getCategoryText(categorie);
+    searchDisplay = "het inzicht";
+  }
+  let onderwerp = "";
+  if (term.startsWith("onderwerp:")) {
+    onderwerp = term.substring(10);
+    searchType = "onderwerp";
+    searchTerm = onderwerp;
+    searchDisplay = "het onderwerp";
+  }
+
+  // search for results
+  let res = "";
+  switch (searchType) {
+    case "term":
+      res = await StoryblokService.get('cdn/stories', {
+        "starts_with": "artikel",
+        "search_term": term
+      })
+      break;
+    case "tag":
+      res = await StoryblokService.get('cdn/stories', {
+        "starts_with": "artikel",
+        "with_tag" : tag
+      })
+      break;
+    case "categorie":
+      res = await StoryblokService.get('cdn/stories', {
+        "starts_with": "artikel",
+        "filter_query[categorie][in]" : categorie
+      })
+      break;
+    case "onderwerp":
+      res = await StoryblokService.get('cdn/stories', {
+        "starts_with": "artikel",
+        "filter_query[onderwerp][in]" : onderwerp
+      })
+      break;
+  }
+
+  // also get subjects & tags
+  // note: these are not always used, this call should be somewhere else for performance
+  let subjects = await StoryblokService.get('cdn/datasource_entries', {
+    "datasource": "subjects"
+  })
+  let tags = await StoryblokService.get('cdn/tags')
+
+  // console.log(JSON.stringify(term))
+  // console.log(JSON.stringify(res))
+
+  return {
+    props: {
+      "display": searchDisplay,
+      "term": searchTerm,
+      "result": res,
+      "subjects": subjects,
+      "tags": tags,
+    }
   }
 }
 

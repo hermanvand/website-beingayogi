@@ -12,28 +12,7 @@ class DynamicSlug extends React.Component {
       story: props.res.data.story
     }
   }
-
-  static async getInitialProps({ query }) {
-    // console.log(JSON.stringify(query))
-    // var chars = 'a-zA-Z0-9_.~:\\-\\s';
-    // query.slug = validator.whitelist(query.slug, chars)
-
-    let res = {};
-    try {
-      StoryblokService.setQuery(query)
-      res = await StoryblokService.get('cdn/stories/'+query.slug, {
-      })
-    }
-    catch(error) {
-        // log the error
-        //console.log("ERROR!!!")
-        res = {"data":{"story":{"content":"not found","title":"not found","description":"not found"}}}
-    }
-    return {
-      res
-    }
-  }
-
+  
   componentDidMount() {
     StoryblokService.initEditor(this)
   }
@@ -51,6 +30,54 @@ class DynamicSlug extends React.Component {
       </Layout>
     )
   }
+}
+
+export async function getStaticProps({ params }) {
+  // console.log(JSON.stringify(params))
+  // var chars = 'a-zA-Z0-9_.~:\\-\\s';
+  // params.slug = validator.whitelist(params.slug, chars)
+
+  let res = {};
+  try {
+    res = await StoryblokService.get('cdn/stories/'+params.slug, {
+    })
+  }
+  catch(error) {
+      // log the error
+      //console.log("ERROR!!!")
+      res = {"data":{"story":{"content":"not found","title":"not found","description":"not found"}}}
+  }
+  return {
+    props: { 
+      res: res
+    },
+    revalidate: 600
+  }
+}
+
+export async function getStaticPaths() {
+
+  let res = await StoryblokService.get("cdn/links/")
+  let paths = []
+
+  //console.log(JSON.stringify(res))
+  Object.keys(res.data.links).forEach((linkKey) => {
+
+    if (res.data.links[linkKey].is_folder || res.data.links[linkKey].slug === "home") {
+      return;
+    }
+
+    let slug = res.data.links[linkKey].slug;
+
+    paths.push({ params: { slug: slug } });
+
+  })
+
+  return {
+    paths: paths,
+    fallback: false,
+  }
+
 }
 
 export default DynamicSlug

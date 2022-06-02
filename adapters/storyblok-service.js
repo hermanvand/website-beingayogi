@@ -25,7 +25,8 @@ class StoryblokService {
 
     // console.log(JSON.stringify(params))
 
-    if (this.getQuery('_storyblok') || this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
+    //if (this.getQuery('_storyblok') || this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
+    if (this.devMode || (typeof window !== 'undefined' && window.storyblok)) {
       params.version = 'draft'
     }
 
@@ -68,7 +69,8 @@ class StoryblokService {
   }
 
   bridge() {
-    if (!this.getQuery('_storyblok') && !this.devMode) {
+    //if (!this.getQuery('_storyblok') && !this.devMode) {
+    if (!this.devMode) {
       return ''
     }
     return (<script src={'//app.storyblok.com/f/storyblok-latest.js?t=' + this.token}></script>)

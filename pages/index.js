@@ -11,18 +11,6 @@ class HomePage extends React.Component {
     }
   }
 
-  static async getInitialProps({ query }) {
-    StoryblokService.setQuery(query)
-
-    let res = await StoryblokService.get('cdn/stories/home', {
-        "resolve_relations": "subjectRow.articleList"
-    })
-
-    return {
-      res
-    }
-  }
-
   componentDidMount() {
     StoryblokService.initEditor(this)
   }
@@ -35,6 +23,19 @@ class HomePage extends React.Component {
         <DynamicPage content={contentOfStory} />
       </Layout>
     )
+  }
+}
+
+export async function getStaticProps() {
+  let res = await StoryblokService.get('cdn/stories/home', {
+      "resolve_relations": "subjectRow.articleList"
+  })
+
+  return {
+    props: { 
+      res: res
+    },
+    revalidate: 600
   }
 }
 
