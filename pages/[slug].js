@@ -63,7 +63,7 @@ export async function getStaticPaths() {
   //console.log(JSON.stringify(res))
   Object.keys(res.data.links).forEach((linkKey) => {
 
-    if (res.data.links[linkKey].is_folder || res.data.links[linkKey].slug === "home") {
+    if (res.data.links[linkKey].is_folder || res.data.links[linkKey].slug === "home" || res.data.links[linkKey].slug === "contact") {
       return;
     }
 
