@@ -56,28 +56,12 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-
-  let res = await StoryblokService.get("cdn/links/")
-  let paths = []
-
-  //console.log(JSON.stringify(res))
-  Object.keys(res.data.links).forEach((linkKey) => {
-
-    if (res.data.links[linkKey].is_folder || res.data.links[linkKey].slug === "home" || res.data.links[linkKey].slug === "contact") {
-      return;
-    }
-
-    let slug = res.data.links[linkKey].slug;
-
-    paths.push({ params: { slug: slug } });
-
-  })
-
   return {
-    paths: paths,
-    fallback: false,
+    paths: [
+      { params: { slug: 'app' } }
+    ],
+    fallback: false
   }
-
 }
 
 export default DynamicSlug
