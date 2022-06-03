@@ -34,6 +34,20 @@ class StoryblokService {
       params.cv = window.StoryblokCacheVersion
     }
 
+    // for production, make sure the CDN cache is cleared after 'revalidate'
+    // this could be in a file, based on a storyblok webhook...
+    if (!this.devMode) {
+      let now = new Date();
+      params.cv = now.toISOString;
+    }
+ 
+    // test cache - cacheVersion remains the same....
+    //console.log("###")
+    //console.log(JSON.stringify(now))
+    //console.log(JSON.stringify(slug))
+    //console.log(JSON.stringify(params))
+    //console.log(JSON.stringify(this.getCacheVersion()))
+
     return this.client.get(slug, params)
   }
 
