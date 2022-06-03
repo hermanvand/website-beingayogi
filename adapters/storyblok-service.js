@@ -38,7 +38,7 @@ class StoryblokService {
     // this could be in a file, based on a storyblok webhook...
     if (!this.devMode) {
       let now = new Date();
-      params.cv = now.toISOString;
+      params.cv = now.toISOString();
     }
  
     // test cache - cacheVersion remains the same....
