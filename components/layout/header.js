@@ -60,22 +60,22 @@ function Header(props) {
                             <NavDropdown.Item href="/main/wees-een-met-het-leven">4. Wees één met het leven</NavDropdown.Item>
                         </NavDropdown>                        
                         <NavDropdown className="myNavbarItem" title="Artikelen" id="collasible-nav-dropdown3">
-                            <NavDropdown.Item href="search?q=onderwerp:balans">Balans</NavDropdown.Item>
-                            <NavDropdown.Item href="search?q=onderwerp:houdingen">Houdingen</NavDropdown.Item>
-                            <NavDropdown.Item href="search?q=onderwerp:body">Body</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:balans">Balans</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:houdingen">Houdingen</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:body">Body</NavDropdown.Item>
                             <NavDropdown.Divider/>
-                            <NavDropdown.Item href="search?q=onderwerp:energie">Energie</NavDropdown.Item>
-                            <NavDropdown.Item href="search?q=onderwerp:aandacht">Aandacht</NavDropdown.Item>
-                            <NavDropdown.Item href="search?q=onderwerp:mind">Mind</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:energie">Energie</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:aandacht">Aandacht</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:mind">Mind</NavDropdown.Item>
                             <NavDropdown.Divider/>
-                            <NavDropdown.Item href="search?q=onderwerp:meditatie">Meditatie</NavDropdown.Item>
-                            <NavDropdown.Item href="search?q=onderwerp:persoonlijk">Persoonlijk bewustzijn</NavDropdown.Item>
-                            <NavDropdown.Item href="search?q=onderwerp:soul">Soul</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:meditatie">Meditatie</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:persoonlijk">Persoonlijk bewustzijn</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:soul">Soul</NavDropdown.Item>
                             <NavDropdown.Divider/>
-                            <NavDropdown.Item href="search?q=onderwerp:goddelijk">Goddelijk bewustzijn</NavDropdown.Item>
-                            <NavDropdown.Item href="search?q=onderwerp:zelfrealisatie">Zelfrealisatie</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:goddelijk">Goddelijk bewustzijn</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:zelfrealisatie">Zelfrealisatie</NavDropdown.Item>
                             <NavDropdown.Divider/>
-                            <NavDropdown.Item href="search?q=onderwerp:leven">Uit het dagelijks leven</NavDropdown.Item>
+                            <NavDropdown.Item href="/search?q=onderwerp:leven">Uit het dagelijks leven</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown className="myNavbarItem" title="Over ons" id="collasible-nav-dropdown2">
                             <NavDropdown.Item href="/info/overview">Being a yogi leeswijzer</NavDropdown.Item>
