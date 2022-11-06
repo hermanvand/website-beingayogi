@@ -52,6 +52,12 @@ function ContactForm () {
             formData.append(key, value);
         });
 
+        /* no spam from Crytorounc please... could make a blacklist here */
+        if (formData.get("naam") === "Crytorounc") {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
         setShowToast(true);
 
         /*
