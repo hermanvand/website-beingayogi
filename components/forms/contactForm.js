@@ -52,8 +52,9 @@ function ContactForm () {
             formData.append(key, value);
         });
 
-        /* no spam from Crytorounc please... could make a blacklist here */
-        if (formData.get("naam") === "Crytorounc") {
+        /* no spam from blacklist please...  */
+        let blacklist = ["Crytorounc","rounc","Eric Jones"];
+        if (blacklist.includes(formData.get("naam"))) {
             event.preventDefault();
             event.stopPropagation();
         }
