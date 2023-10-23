@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 import EmailForm from '../forms/emailForm'
 
@@ -59,33 +58,31 @@ function Highlight ({blok}) {
   // console.log(JSON.stringify({blok}))
 
   return (
-    <SbEditable content={blok}>
-        <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte}>
-          <Row className="fullWidth">
-              <Col></Col>
-              <Col sm={8} >
-                <p className="tagline">{blok.title}</p>
-                <p className="secondline">{blok.subtitle}</p>
-              </Col>
-              <Col></Col>
-          </Row>
-          <Row>
-              <Col>
-                <p className='description'>{blok.description}</p>
-                <p className='description'>{blok.action}</p>
-              </Col>
-          </Row>
-          <Row className="teaser">
-            <Row className="form">
-              <Col></Col>
-              <Col sm={8}>
-                <EmailForm></EmailForm>
-              </Col>
-              <Col></Col>
-            </Row>
-          </Row>
-        </StyledContainer>
-    </SbEditable>
+    <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte}>
+      <Row className="fullWidth">
+          <Col></Col>
+          <Col sm={8} >
+            <p className="tagline">{blok.title}</p>
+            <p className="secondline">{blok.subtitle}</p>
+          </Col>
+          <Col></Col>
+      </Row>
+      <Row>
+          <Col>
+            <p className='description'>{blok.description}</p>
+            <p className='description'>{blok.action}</p>
+          </Col>
+      </Row>
+      <Row className="teaser">
+        <Row className="form">
+          <Col></Col>
+          <Col sm={8}>
+            <EmailForm></EmailForm>
+          </Col>
+          <Col></Col>
+        </Row>
+      </Row>
+    </StyledContainer>
   )
 }
 

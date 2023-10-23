@@ -1,43 +1,38 @@
 import React from 'react'
-import StoryblokService from '../../adapters/storyblok-service'
+
+// libs
+import { getStoryFromStoryBlok } from '../../lib/storyblokData';
+
+// components
 import Layout from "../../components/layout/layout"
 import Contact from '../../components/pages/contact'
+import NotFound from '../../components/pages/notFound'
 
-class ContactPage extends React.Component {
-  constructor(props) {
-    super(props)
-    //console.log(JSON.stringify(props))
-
-    this.state = {
-      story: props.res.data.story
-    }
-  }
-
-  componentDidMount() {
-    StoryblokService.initEditor(this)
-  }
-
-  render() {
-    const contentOfStory = this.state.story.content
-
-    return (
-      <Layout title={contentOfStory.title} description={contentOfStory.intro}>
-        <Contact content={contentOfStory} />
-      </Layout>
-    )
-  }
-
+// return the contact page
+function ContactPage ( { story } ) {
+  return (
+    <Layout title={story?.content.title} description={story?.content.intro}>
+      {(! story) ? (
+        <NotFound/> 
+      ) : (
+        <Contact content={story.content} />
+      )}
+    </Layout>
+  )
 }
 
+// get data from storyblok
 export async function getStaticProps() {
+  // init
+  let sbSlug = "contact";
+  let sbParams = {
+  };
 
-  let res = await StoryblokService.get('cdn/stories/contact', {
-  })
-  //let res = await StoryblokService.get('cdn/stories?filter_query[onderwerp][is]=houdingen', {})
+  let story = await getStoryFromStoryBlok(sbSlug, sbParams);
 
   return {
     props: { 
-      res: res
+      story: story
     },
     revalidate: 600
   }

@@ -1,5 +1,3 @@
-import StoryblokService from '../../adapters/storyblok-service'
-
 // Head, Header & Footer are main components of a page
 import Head from "./head"
 import Header from "./header"
@@ -18,7 +16,6 @@ function Layout ({ children, title, description }) {
       <Header />
       {children}
       <Footer />
-      {StoryblokService.bridge()}
     </View>
   )
 }

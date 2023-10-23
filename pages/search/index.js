@@ -1,50 +1,35 @@
 import React from 'react'
-import StoryblokService from '../../adapters/storyblok-service'
+import validator from 'validator';
+
+// libs
+import getCategoryText from "../../lib/categoryText.js"
+import { getDatasourceEntriesFromStoryBlok, getStoriesFromStoryBlok, getTagsFromStoryBlok } from '../../lib/storyblokData.js';
+
+// components
 import Layout from "../../components/layout/layout"
 import SearchResult from '../../components/pages/search/searchResults'
 import TagResult from '../../components/pages/search/tagResults'
 import SubjectResult from '../../components/pages/search/subjectResults'
-import validator from 'validator';
-import getCategoryText from "../../lib/categoryText.js"
+import NotFound from '../../components/pages/notFound'
 
-class SearchPage extends React.Component {
-  constructor(props) {
-    super(props)
-    //console.log(JSON.stringify(props))
-
-    this.state = {
-      stories: props.result.data.stories,
-      display: props.display,
-      term: props.term,
-      tags: props.tags.data.tags,
-      subjects: props.subjects.data.datasource_entries
-    }
-  }
-
-  componentDidMount() {
-    StoryblokService.initEditor(this)
-  }
-
-  render() {
-    const display = this.state.display
-    const term = this.state.term
-    const stories = this.state.stories
-    const subjects = this.state.subjects
-    const tags = this.state.tags
-
-    //console.log(JSON.stringify(tags))
-    //console.log(JSON.stringify(subjects))
-
-    return (
-      <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
-        <SearchResult display={display} term={term} stories={stories}></SearchResult>
-        <SubjectResult subjects={subjects}></SubjectResult>
-        {stories && stories == 0 && <TagResult tags={tags}></TagResult>}
-      </Layout>
-    )
-  }
+// return a search page
+function SearchPage ( { result }) {
+  return (
+    <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
+      {(! result.stories) ? (
+        <NotFound/> 
+      ) : (
+        <main>
+          <SearchResult display={result.display} term={result.term} stories={result.stories}></SearchResult>
+          <SubjectResult subjects={result.subjects}></SubjectResult>
+          {result.stories == 0 && <TagResult tags={result.tags}></TagResult>}
+        </main>
+      )}
+    </Layout>
+  )
 }
 
+// get data from storyblok
 export async function getServerSideProps({ query }) {
 
   // validate input
@@ -85,51 +70,47 @@ export async function getServerSideProps({ query }) {
   }
 
   // search for results
-  let res = "";
+  // init
+  let sbParams = {};
+  if (process.env.STORYBLOK_DEV_MODE === "true") {
+    sbParams.version = "draft";
+  }
   switch (searchType) {
     case "term":
-      res = await StoryblokService.get('cdn/stories', {
-        "starts_with": "artikel",
-        "search_term": term
-      })
+      sbParams.starts_with = "artikel";
+      sbParams.search_term = term;
       break;
     case "tag":
-      res = await StoryblokService.get('cdn/stories', {
-        "starts_with": "artikel",
-        "with_tag" : tag
-      })
+      sbParams.starts_with = "artikel";
+      sbParams.with_tag = tag;
       break;
     case "categorie":
-      res = await StoryblokService.get('cdn/stories', {
-        "starts_with": "artikel",
-        "filter_query[categorie][in]" : categorie
-      })
+      sbParams.starts_with = "artikel";
+      sbParams["filter_query[categorie][in]"] = categorie;
       break;
     case "onderwerp":
-      res = await StoryblokService.get('cdn/stories', {
-        "starts_with": "artikel",
-        "filter_query[onderwerp][in]" : onderwerp
-      })
+      sbParams.starts_with = "artikel";
+      sbParams["filter_query[onderwerp][in]"] = onderwerp;
       break;
   }
 
+  // go
+  let stories = await getStoriesFromStoryBlok(sbParams);
+
   // also get subjects & tags
   // note: these are not always used, this call should be somewhere else for performance
-  let subjects = await StoryblokService.get('cdn/datasource_entries', {
-    "datasource": "subjects"
-  })
-  let tags = await StoryblokService.get('cdn/tags')
-
-  // console.log(JSON.stringify(term))
-  // console.log(JSON.stringify(res))
+  let subjects = await getDatasourceEntriesFromStoryBlok({"datasource": "subjects"})
+  let tags = await getTagsFromStoryBlok({})
 
   return {
     props: {
-      "display": searchDisplay,
-      "term": searchTerm,
-      "result": res,
-      "subjects": subjects,
-      "tags": tags,
+      result: {
+        "display": searchDisplay,
+        "term": searchTerm,
+        "stories": stories,
+        "subjects": subjects,
+        "tags": tags,
+      }
     }
   }
 }

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import React from 'react'
-import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -53,17 +52,15 @@ function Teaser({blok}) {
   }
 
   return (
-    <SbEditable content={blok}>
-        <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte}>
-          <Row className="teaser">
-            <Col>
-              <h2 className='headline'>{blok.headline}</h2>
-              <p className='description'>{blok.description}</p>
-              <a href={blok.playlink.cached_url}><button type="button" className="btn btn-light"><FontAwesomeIcon icon={playIcon} size="2x"/> {playText}</button></a>
-            </Col>
-          </Row>
-        </StyledContainer>
-    </SbEditable>
+    <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte}>
+      <Row className="teaser">
+        <Col>
+          <h2 className='headline'>{blok.headline}</h2>
+          <p className='description'>{blok.description}</p>
+          <a href={blok.playlink.cached_url}><button type="button" className="btn btn-light"><FontAwesomeIcon icon={playIcon} size="2x"/> {playText}</button></a>
+        </Col>
+      </Row>
+    </StyledContainer>
   )
   
 }

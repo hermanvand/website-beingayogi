@@ -1,39 +1,41 @@
 import React from 'react'
-import StoryblokService from '../adapters/storyblok-service'
-import DynamicPage from '../components/DynamicPage'
+import { StoryblokComponent } from "@storyblok/react"
+
+// libs
+import { getStoryFromStoryBlok } from '../lib/storyblokData'
+
+// components
 import Layout from "../components/layout/layout"
 
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      story: props.res.data.story
-    }
-  }
+// return the homepage, with storyblok components only
+function HomePage ( { story } ) {
+  return (
+    <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
+      {(! story) ? (
+        <NotFound/> 
+      ) : (
+        story.content.body.map((blok) => (
+          <StoryblokComponent blok={blok} key={blok._uid} />
+        ))
+      )}
 
-  componentDidMount() {
-    StoryblokService.initEditor(this)
-  }
-
-  render() {
-    const contentOfStory = this.state.story.content
-
-    return (
-      <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
-        <DynamicPage content={contentOfStory} />
-      </Layout>
-    )
-  }
+    </Layout>
+  )
 }
 
+// get data from storyblok
 export async function getStaticProps() {
-  let res = await StoryblokService.get('cdn/stories/home', {
-      "resolve_relations": "subjectRow.articleList"
-  })
+  // init
+  let sbSlug = "home";
+  let sbParams = {
+    "resolve_relations": "subjectRow.articleList"
+  };
+  
+  let story = await getStoryFromStoryBlok(sbSlug, sbParams);
 
   return {
     props: { 
-      res: res
+      story: story
     },
     revalidate: 600
   }

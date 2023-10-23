@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 import DynamicIcon from '../../DynamicIcon'
 
@@ -48,23 +47,21 @@ function Feature ({blok}) {
   }
 
   return (
-    <SbEditable content={blok}>
-        <StyledContainer bordercolor={ borderColor }>
-            <Row>
-                <Col>
-                    <a href={blok.link.cached_url} className="text-decoration-none text-reset notContentLink">
-                    <DynamicIcon type={blok.icon} />
-                    <p className="featureTitle">
-                      {blok.name}
-                    </p>
-                    <p className="description">
-                        {blok.description}
-                    </p>
-                    </a>
-                </Col>
-            </Row>
-        </StyledContainer>
-    </SbEditable>
+    <StyledContainer bordercolor={ borderColor }>
+        <Row>
+            <Col>
+                <a href={blok.link.cached_url} className="text-decoration-none text-reset notContentLink">
+                <DynamicIcon type={blok.icon} />
+                <p className="featureTitle">
+                  {blok.name}
+                </p>
+                <p className="description">
+                    {blok.description}
+                </p>
+                </a>
+            </Col>
+        </Row>
+    </StyledContainer>
   )
 }
 

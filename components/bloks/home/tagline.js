@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
@@ -30,18 +29,16 @@ const StyledContainer = styled(Container)`
 function Tagline ({blok}) {
 
   return (
-    <SbEditable content={blok}>
-          <StyledContainer>
-              <Row className="fullWidth">
-                  <Col></Col>
-                  <Col sm={8} >
-                    <p className="tagline">{blok.tagline}</p>
-                    <p className="secondline">{blok.secondline}</p>
-                  </Col>
-                  <Col></Col>
-              </Row>
-          </StyledContainer>
-    </SbEditable>
+    <StyledContainer>
+        <Row className="fullWidth">
+            <Col></Col>
+            <Col sm={8} >
+              <p className="tagline">{blok.tagline}</p>
+              <p className="secondline">{blok.secondline}</p>
+            </Col>
+            <Col></Col>
+        </Row>
+    </StyledContainer>
   )
 }
 

@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { Container, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap"
 
 const StyledContainer = styled(Container)`
@@ -69,36 +68,34 @@ function SubjectRow({blok}) {
     subjectLink = <a href={"/search?q=onderwerp:" + blok.subject}><FontAwesomeIcon icon='external-link-alt'/></a>
   }
   return (
-  <SbEditable content={blok}>
-        <StyledContainer>
-          <Row>
-            <Col className="title">
-              {blok.title &&
-                <p>{blok.title} {subjectLink}</p> 
-              }
-            </Col>
-          </Row>
-          <Row className="flex-nowrap overflow-auto scrollBox">
-          {blok.articleList.map((article) => {
-            return (
-              <Col className="item" key={article.content._uid} xs="auto">
-                <OverlayTrigger
-                  placement="bottom"
-                  overlay={<Tooltip>{article.content.summary}</Tooltip>}>
-                    <a className="subjectLink notContentLink" href={"/"+article.full_slug}>
-                      <div className="itemBG" style={{backgroundImage: "url("+article.content.image+")"}}>
-                        <div className="anchorBG">
-                          {article.content.title}
-                        </div>
-                      </div>
-                    </a>
-                </OverlayTrigger>
-              </Col>
-            )
-          })}
-          </Row>
-        </StyledContainer>
-  </SbEditable>
+    <StyledContainer>
+      <Row>
+        <Col className="title">
+          {blok.title &&
+            <p>{blok.title} {subjectLink}</p> 
+          }
+        </Col>
+      </Row>
+      <Row className="flex-nowrap overflow-auto scrollBox">
+      {blok.articleList.map((article) => {
+        return (
+          <Col className="item" key={article.content._uid} xs="auto">
+            <OverlayTrigger
+              placement="bottom"
+              overlay={<Tooltip>{article.content.summary}</Tooltip>}>
+                <a className="subjectLink notContentLink" href={"/"+article.full_slug}>
+                  <div className="itemBG" style={{backgroundImage: "url("+article.content.image+")"}}>
+                    <div className="anchorBG">
+                      {article.content.title}
+                    </div>
+                  </div>
+                </a>
+            </OverlayTrigger>
+          </Col>
+        )
+      })}
+      </Row>
+    </StyledContainer>
   )
 }
 

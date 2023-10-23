@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Container, Row, Col } from "react-bootstrap"
-import DynamicComponent from '../DynamicComponent'
+import { StoryblokComponent } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   margin-top:20px;
@@ -16,7 +16,7 @@ function DisplayRelated ({related}) {
             <Col>
               { related && related.length > 0 && <div><hr className="lineOn"/><p>Lees een gerelateerd artikel</p></div> }
               { related && related.map((nestedBlok) => (
-                <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
+                <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
               ))}
             </Col>
         </Row>

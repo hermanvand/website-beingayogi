@@ -1,60 +1,53 @@
 import React from 'react'
-import StoryblokService from '../adapters/storyblok-service'
-import DynamicPage from '../components/DynamicPage'
-import Layout from "../components/layout/layout"
-import NotFound from "../components/pages/notFound"
+import { StoryblokComponent } from "@storyblok/react"
 import validator from 'validator';
 
-class DynamicSlug extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      story: props.res.data.story
-    }
-  }
-  
-  componentDidMount() {
-    StoryblokService.initEditor(this)
-  }
+// libs
+import { getStoryFromStoryBlok } from '../lib/storyblokData'
 
-  render() {
-    const contentOfStory = this.state.story.content
-    let loadPage = <DynamicPage content={contentOfStory} />
-    if (contentOfStory == "not found") {
-      loadPage = <NotFound></NotFound>
-    }
+// components
+import Layout from "../components/layout/layout"
+import NotFound from "../components/pages/notFound"
 
-    return (
-      <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
-        {loadPage}
-      </Layout>
-    )
-  }
+// return a dynamic storyblok page
+function DynamicSlug ({story}) {
+  return (
+    <Layout title={story?.content.title} description={story?.content.intro}>
+      {(! story) ? (
+        <NotFound/> 
+      ) : (
+        story.content.body.map((blok) => (
+          <StoryblokComponent blok={blok} key={blok._uid} />
+        ))
+      )}
+    </Layout>
+  )
 }
 
+// get data from storyblok
 export async function getStaticProps({ params }) {
+
   // console.log(JSON.stringify(params))
   // var chars = 'a-zA-Z0-9_.~:\\-\\s';
   // params.slug = validator.whitelist(params.slug, chars)
+  
+  // init
+  let sbSlug = params.slug;
+  let sbParams = {
+    "resolve_relations": "subjectRow.articleList"
+  };
 
-  let res = {};
-  try {
-    res = await StoryblokService.get('cdn/stories/'+params.slug, {
-    })
-  }
-  catch(error) {
-      // log the error
-      //console.log("ERROR!!!")
-      res = {"data":{"story":{"content":"not found","title":"not found","description":"not found"}}}
-  }
+  let story = await getStoryFromStoryBlok(sbSlug, sbParams);
+
   return {
     props: { 
-      res: res
+      story: story
     },
     revalidate: 600
   }
 }
 
+//list the slugs to fetch
 export async function getStaticPaths() {
   return {
     paths: [

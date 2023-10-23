@@ -1,14 +1,13 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col } from "react-bootstrap"
-import DynamicComponentRendered from '../../DynamicComponentRendered'
 import DisplayDate from '../../lib/displayDate'
 import DisplayReadingTime from '../../lib/displayReadingTime'
 import DisplayTag from '../../lib/displayTag'
 import DisplaySubject from '../../lib/displaySubject'
 import DisplayCategory from '../../lib/displayCategory'
 import DisplayRelated from '../../lib/displayRelated'
+import { StoryblokComponent } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   // video container
@@ -36,7 +35,6 @@ function Video ({ content, tags, thisDate }) {
   //console.log(JSON.stringify(thisDate))
   
   return (
-  <SbEditable content={content}>
     <StyledContainer className="contentBody">
         <Row>
           <Col className="content">
@@ -48,9 +46,10 @@ function Video ({ content, tags, thisDate }) {
             <p className="contentIntro">{content.intro}</p>
             {render(content.long_text,
               {
-                defaultBlokResolver: (name, props) => (
-                  <DynamicComponentRendered component={name} blok={props} key={props._uid} />
-                )
+                defaultBlokResolver: (name, props) => {
+                  const blok = { ...props, component: name };
+                  return <StoryblokComponent blok={blok} key={props._uid} />;
+                }
               }
             )}
             <DisplayRelated related={content.related} />
@@ -62,7 +61,6 @@ function Video ({ content, tags, thisDate }) {
           </Col>
         </Row>
     </StyledContainer>
-  </SbEditable>
   )
 }
 

@@ -1,11 +1,9 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Image } from "react-bootstrap"
-import DynamicComponentRendered from '../../DynamicComponentRendered'
-import DynamicComponent from '../../DynamicComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DisplayReadingTime from '../../lib/displayReadingTime'
+import { StoryblokComponent } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   .cat {
@@ -18,7 +16,6 @@ function Info ({ content }) {
  // console.log(JSON.stringify(content))
 
   return (
-  <SbEditable content={content}>
     <StyledContainer className="contentBody">
         <Row>
           <Col sm={2} className="contentLeft">
@@ -36,15 +33,16 @@ function Info ({ content }) {
             <p className="contentIntro">{content.intro}</p>
             {render(content.long_text,
               {
-                defaultBlokResolver: (name, props) => (
-                  <DynamicComponentRendered component={name} blok={props} key={props._uid} />
-                )
+                defaultBlokResolver: (name, props) => {
+                  const blok = { ...props, component: name };
+                  return <StoryblokComponent blok={blok} key={props._uid} />;
+                }
               }
             )}
             
             {(typeof content.featurerow !== 'undefined') &&
             content.featurerow.map((nestedBlok) => (
-            <DynamicComponent blok={nestedBlok} key={nestedBlok._uid} />
+              <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
             ))}
           </Col>
           
@@ -52,7 +50,6 @@ function Info ({ content }) {
           </Col>
         </Row>
     </StyledContainer>
-  </SbEditable>
   )
 }
 

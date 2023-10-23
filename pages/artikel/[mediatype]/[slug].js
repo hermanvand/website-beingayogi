@@ -1,102 +1,85 @@
 import React from 'react'
-import StoryblokService from '../../../adapters/storyblok-service'
+
+// libs
+import { getLinksFromStoryBlok, getStoryFromStoryBlok } from '../../../lib/storyblokData'
+
+// components
 import Layout from "../../../components/layout/layout"
 import Text from '../../../components/pages/mediatype/text'
 import Video from '../../../components/pages/mediatype/video'
 import NotFound from '../../../components/pages/notFound'
 
-class ArticlePage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      story: props.res.data.story
+// return an article
+function ArticlePage( { story }) {
+
+  let loadPage = <NotFound/>
+  if (story) {
+    switch (story.content.component) {
+      case "textPage":
+        loadPage = <Text content={story.content} tags={story.tag_list} thisDate={story.published_at}/>
+        break;
+      case "videoPage":
+        loadPage = <Video content={story.content}  tags={story.tag_list} thisDate={story.published_at}/>
+        break;
     }
   }
 
-  componentDidMount() {
-    StoryblokService.initEditor(this)
-  }
-
-  render() {
-    const contentOfStory = this.state.story.content
-    //console.log(JSON.stringify(this.state.story))
-
-    let loadPage
-    if (contentOfStory == "not found") {
-      loadPage = <NotFound></NotFound>
-    }
-    else {
-      const tagList = this.state.story.tag_list
-      //const thisDate = this.state.story.created_at
-      const thisDate = this.state.story.published_at
-
-      switch (contentOfStory.component) {
-        case "textPage":
-          loadPage = <Text content={contentOfStory} tags={tagList} thisDate={thisDate}/>
-          break;
-        case "videoPage":
-          loadPage = <Video content={contentOfStory}  tags={tagList} thisDate={thisDate}/>
-          break;
-        default:
-          loadPage = <NotFound/>
-          break;
-      }
-  }
-
-    return (
-      <Layout title={contentOfStory.title} description={contentOfStory.intro}>
-        {loadPage}
-      </Layout>
-    )
-  }
+  return (
+    <Layout title={story?.content.title} description={story?.content.intro}>
+      {loadPage}
+    </Layout>
+  )
 }
 
+// get data from storyblok
 export async function getStaticProps({ params }) {
-  let res = {};
-  try {
-    res = await StoryblokService.get('cdn/stories/artikel/'+params.mediatype+'/'+params.slug, {
-      "resolve_relations": "subjectRow.articleList"
-    })
-  }
-  catch(error) {
-      // log the error
-      //console.log("ERROR!!!")
-      res = {"data":{"story":{"content":"not found","title":"not found","description":"not found"}}}
-  }
+  // init
+  let sbSlug = "artikel/"+params.mediatype+'/'+params.slug;
+  let sbParams = {
+    "resolve_relations": "subjectRow.articleList"
+  };
+
+  let story = await getStoryFromStoryBlok(sbSlug, sbParams);
+
   return {
     props: { 
-      res: res
+      story: story
     },
     revalidate: 600
   }
 }
 
+//list the slugs to fetch
 export async function getStaticPaths() {
+  let sbParams = {
+    starts_with: "artikel/"
+  };
 
-  let res = await StoryblokService.get("cdn/links/?starts_with=artikel/")
+  let links = await getLinksFromStoryBlok(sbParams);
+
   let paths = []
 
-  //console.log(JSON.stringify(res))
-  Object.keys(res.data.links).forEach((linkKey) => {
+  if (links) {
+    Object.keys(links).forEach((linkKey) => {
 
-    if (res.data.links[linkKey].is_folder) {
-      return;
-    }
+      if (links[linkKey].is_folder) {
+        return;
+      }
 
-    let slug = res.data.links[linkKey].slug;
+      let slug = links[linkKey].slug;
 
-    let splittedSlug = slug.split("/");
-    let mediatype = splittedSlug[1]
-    slug = splittedSlug[2]
-    paths.push({ params: { mediatype: mediatype, slug: slug } });
+      let splittedSlug = slug.split("/");
+      let mediatype = splittedSlug[1]
+      slug = splittedSlug[2]
+      paths.push({ params: { mediatype: mediatype, slug: slug } });
 
-  })
+    })
+  }
 
   return {
     paths: paths,
     fallback: 'blocking',
   }
-
 }
 
 export default ArticlePage

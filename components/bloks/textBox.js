@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
 import { render } from "storyblok-rich-text-react-renderer"
 
@@ -19,17 +18,15 @@ function TextBox ({blok}) {
   //console.log(JSON.stringify(blok.link))
 
   return (
-    <SbEditable content={blok}>
-        <StyledContainer>
-            <Row>
-                <Col>
-                    <p>
-                        {render(blok.text)}
-                    </p>
-                </Col>
-            </Row>
-        </StyledContainer>
-    </SbEditable>
+    <StyledContainer>
+        <Row>
+            <Col>
+                <p>
+                    {render(blok.text)}
+                </p>
+            </Col>
+        </Row>
+    </StyledContainer>
   )
 }
 

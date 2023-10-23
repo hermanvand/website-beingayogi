@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { Container, Row, Col } from "react-bootstrap"
-import DynamicComponent from '../../DynamicComponent'
+import { StoryblokComponent } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   background-color: #AE877D;
@@ -37,28 +36,26 @@ const StyledContainer = styled(Container)`
 function FeatureRow ({blok}) {
 
   return (
-    <SbEditable content={blok}>
-          <StyledContainer>
-              <Row className="fullWidth">
-                  <Col className="featureRowTitle">
-                      <p>{blok.title}</p>
-                  </Col>
-              </Row>
-              <Row className="fullWidth">
-                  <Col className="featureRowDescription">
-                      <p>{blok.description}</p>
-                  </Col>
-              </Row>
-              <Row className="itemList">
-                  {blok.columns.map((nestedBlok) => (
-                      <Col className="featureItem" key={nestedBlok._uid}>
-                          <DynamicComponent blok={nestedBlok} />
-                      </Col>
-                      )
-                  )}
-              </Row>
-          </StyledContainer>
-    </SbEditable>
+    <StyledContainer>
+        <Row className="fullWidth">
+            <Col className="featureRowTitle">
+                <p>{blok.title}</p>
+            </Col>
+        </Row>
+        <Row className="fullWidth">
+            <Col className="featureRowDescription">
+                <p>{blok.description}</p>
+            </Col>
+        </Row>
+        <Row className="itemList">
+            {blok.columns.map((nestedBlok) => (
+                <Col className="featureItem" key={nestedBlok._uid}>
+                    <StoryblokComponent blok={nestedBlok} />
+                </Col>
+                )
+            )}
+        </Row>
+    </StyledContainer>
   )
 }
 

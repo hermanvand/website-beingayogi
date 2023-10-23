@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import SbEditable from 'storyblok-react'
 import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Button } from "react-bootstrap"
-import DynamicComponentRendered from '../../DynamicComponentRendered'
 import DynamicIcon from '../../DynamicIcon'
 import DisplayRelated from '../../lib/displayRelated'
 import DisplayReadingTime from '../../lib/displayReadingTime'
 import DisplayCategoryAll from '../../lib/displayCategoryAll'
+import { StoryblokComponent } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   .cat {
@@ -19,7 +18,6 @@ function Main ({ content }) {
   //console.log(JSON.stringify(content))
 
   return (
-  <SbEditable content={content}>
     <StyledContainer className="contentBody">
         <Row>
           <Col sm={2} className="contentLeft">
@@ -37,9 +35,10 @@ function Main ({ content }) {
               <p></p>
               {render(content.long_text,
                 {
-                  defaultBlokResolver: (name, props) => (
-                    <DynamicComponentRendered component={name} blok={props} key={props._uid} />
-                  )
+                  defaultBlokResolver: (name, props) => {
+                    const blok = { ...props, component: name };
+                    return <StoryblokComponent blok={blok} key={props._uid} />;
+                  }
                 }
               )}
 
@@ -51,7 +50,6 @@ function Main ({ content }) {
           </Col>
         </Row>
     </StyledContainer>
-  </SbEditable>
   )
 }
 
