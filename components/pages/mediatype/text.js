@@ -7,7 +7,7 @@ import DisplayTag from '../../lib/displayTag'
 import DisplaySubject from '../../lib/displaySubject'
 import DisplayCategory from '../../lib/displayCategory'
 import DisplayRelated from '../../lib/displayRelated'
-import { StoryblokComponent } from '@storyblok/react'
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
 `
@@ -18,7 +18,7 @@ function Text ({content, tags, thisDate}) {
   //console.log(JSON.stringify(thisDate))
      
   return (
-    <StyledContainer className="contentBody">
+    <StyledContainer className="contentBody" {...storyblokEditable(content)}>
         <Row>
           <Col className="contentLeft">
             <img src={content.image}/>

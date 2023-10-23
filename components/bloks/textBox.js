@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Container, Row, Col } from "react-bootstrap"
 import { render } from "storyblok-rich-text-react-renderer"
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   border-right-style: solid;
@@ -18,7 +19,7 @@ function TextBox ({blok}) {
   //console.log(JSON.stringify(blok.link))
 
   return (
-    <StyledContainer>
+    <StyledContainer {...storyblokEditable(blok)}>
         <Row>
             <Col>
                 <p>

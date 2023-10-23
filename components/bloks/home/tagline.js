@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Container, Row, Col } from "react-bootstrap"
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   background-color: #34605f;
@@ -29,7 +30,7 @@ const StyledContainer = styled(Container)`
 function Tagline ({blok}) {
 
   return (
-    <StyledContainer>
+    <StyledContainer {...storyblokEditable(blok)}>
         <Row className="fullWidth">
             <Col></Col>
             <Col sm={8} >

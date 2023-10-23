@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import React from 'react'
 import { Container, Row, Col } from "react-bootstrap"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   // row
@@ -52,7 +53,7 @@ function Teaser({blok}) {
   }
 
   return (
-    <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte}>
+    <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte} {...storyblokEditable(blok)}>
       <Row className="teaser">
         <Col>
           <h2 className='headline'>{blok.headline}</h2>

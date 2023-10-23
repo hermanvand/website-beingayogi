@@ -5,7 +5,7 @@ import DynamicIcon from '../../DynamicIcon'
 import DisplayRelated from '../../lib/displayRelated'
 import DisplayReadingTime from '../../lib/displayReadingTime'
 import DisplayCategoryAll from '../../lib/displayCategoryAll'
-import { StoryblokComponent } from '@storyblok/react'
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   .cat {
@@ -18,7 +18,7 @@ function Main ({ content }) {
   //console.log(JSON.stringify(content))
 
   return (
-    <StyledContainer className="contentBody">
+    <StyledContainer className="contentBody" {...storyblokEditable(content)}>
         <Row>
           <Col sm={2} className="contentLeft">
             <div className="cat">

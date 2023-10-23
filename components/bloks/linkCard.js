@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Container, Row, Col, Button, Card } from "react-bootstrap"
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   margin: 20px;
@@ -14,7 +15,7 @@ function LinkCard ({blok}) {
   }
 
   return (
-    <StyledContainer>
+    <StyledContainer {...storyblokEditable(blok)}>
         <Row>
             <Col>
                 <Card style={{ width: blok.widthpercentage+"%" }}>

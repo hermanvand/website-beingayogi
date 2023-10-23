@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 import { Container, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap"
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   padding: 20px;
@@ -68,7 +69,7 @@ function SubjectRow({blok}) {
     subjectLink = <a href={"/search?q=onderwerp:" + blok.subject}><FontAwesomeIcon icon='external-link-alt'/></a>
   }
   return (
-    <StyledContainer>
+    <StyledContainer {...storyblokEditable(blok)}>
       <Row>
         <Col className="title">
           {blok.title &&
@@ -78,21 +79,23 @@ function SubjectRow({blok}) {
       </Row>
       <Row className="flex-nowrap overflow-auto scrollBox">
       {blok.articleList.map((article) => {
-        return (
-          <Col className="item" key={article.content._uid} xs="auto">
-            <OverlayTrigger
-              placement="bottom"
-              overlay={<Tooltip>{article.content.summary}</Tooltip>}>
-                <a className="subjectLink notContentLink" href={"/"+article.full_slug}>
-                  <div className="itemBG" style={{backgroundImage: "url("+article.content.image+")"}}>
-                    <div className="anchorBG">
-                      {article.content.title}
+        if (article.content) {
+          return (
+            <Col className="item" key={article.content._uid} xs="auto">
+              <OverlayTrigger
+                placement="bottom"
+                overlay={<Tooltip>{article.content.summary}</Tooltip>}>
+                  <a className="subjectLink notContentLink" href={"/"+article.full_slug}>
+                    <div className="itemBG" style={{backgroundImage: "url("+article.content.image+")"}}>
+                      <div className="anchorBG">
+                        {article.content.title}
+                      </div>
                     </div>
-                  </div>
-                </a>
-            </OverlayTrigger>
-          </Col>
-        )
+                  </a>
+              </OverlayTrigger>
+            </Col>
+          )
+        }
       })}
       </Row>
     </StyledContainer>

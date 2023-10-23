@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Container, Row, Col, Button } from "react-bootstrap"
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   max-width:100%;
@@ -28,7 +29,7 @@ function AndMore ({blok}) {
   //console.log(JSON.stringify(blok))
 
   return (
-    <StyledContainer>
+    <StyledContainer {...storyblokEditable(blok)}>
         <Row className="fullWidth">
             <Col></Col>
             <Col sm={8} >

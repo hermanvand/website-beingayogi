@@ -3,7 +3,7 @@ import { render } from "storyblok-rich-text-react-renderer"
 import { Container, Row, Col, Image} from "react-bootstrap"
 import ContactForm from '../../forms/contactForm'
 import DisplayCategoryAll from '../../lib/displayCategoryAll'
-import { StoryblokComponent } from '@storyblok/react'
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
  .stayInTouchIcon {
@@ -17,7 +17,7 @@ function Contact ({ content }) {
   //console.log(JSON.stringify(content))
 
   return (
-    <StyledContainer className="contentBody">
+    <StyledContainer className="contentBody" {...storyblokEditable(content)}>
         <Row>
           <Col sm={2} className="contentLeft">
           {(typeof content.intro_image !== 'undefined') &&

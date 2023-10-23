@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoryblokComponent } from "@storyblok/react"
+import { StoryblokComponent, useStoryblokState } from "@storyblok/react"
 
 // libs
 import { getStoryFromStoryBlok } from '../lib/storyblokData'
@@ -8,7 +8,9 @@ import { getStoryFromStoryBlok } from '../lib/storyblokData'
 import Layout from "../components/layout/layout"
 
 // return the homepage, with storyblok components only
-function HomePage ( { story } ) {
+function HomePage ( { story: initialStory } ) {
+  const story = useStoryblokState(initialStory);
+
   return (
     <Layout title='Being A Yogi' description='Welcome to Being A Yogi'>
       {(! story) ? (

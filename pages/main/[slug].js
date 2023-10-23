@@ -1,5 +1,6 @@
 import React from 'react'
- 
+import { useStoryblokState } from '@storyblok/react'
+
 // libs
 import { getLinksFromStoryBlok, getStoryFromStoryBlok } from '../../lib/storyblokData'
 
@@ -9,7 +10,8 @@ import Main from '../../components/pages/main/index'
 import NotFound from '../../components/pages/notFound'
 
 // return the main page
-function mainPage( { story }) {
+function mainPage( { story: initialStory }) {
+  const story = useStoryblokState(initialStory);
 
   return (
     <Layout title={story?.content.title} description={story?.content.intro}>

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Container, Row, Col } from "react-bootstrap"
 import { StoryblokComponent } from '@storyblok/react'
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
   background-color: #AE877D;
@@ -36,7 +37,7 @@ const StyledContainer = styled(Container)`
 function FeatureRow ({blok}) {
 
   return (
-    <StyledContainer>
+    <StyledContainer {...storyblokEditable(blok)}>
         <Row className="fullWidth">
             <Col className="featureRowTitle">
                 <p>{blok.title}</p>

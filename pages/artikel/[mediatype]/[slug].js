@@ -1,4 +1,5 @@
 import React from 'react'
+import { useStoryblokState } from '@storyblok/react'
 
 // libs
 import { getLinksFromStoryBlok, getStoryFromStoryBlok } from '../../../lib/storyblokData'
@@ -10,7 +11,8 @@ import Video from '../../../components/pages/mediatype/video'
 import NotFound from '../../../components/pages/notFound'
 
 // return an article
-function ArticlePage( { story }) {
+function ArticlePage( { story: initialStory }) {
+  const story = useStoryblokState(initialStory);
 
   let loadPage = <NotFound/>
   if (story) {

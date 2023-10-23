@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Container, Row, Col } from "react-bootstrap"
 import EmailForm from '../forms/emailForm'
+import { storyblokEditable } from '@storyblok/react'
 
 const StyledContainer = styled(Container)`
 max-width:100%;
@@ -58,7 +59,7 @@ function Highlight ({blok}) {
   // console.log(JSON.stringify({blok}))
 
   return (
-    <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte}>
+    <StyledContainer url={"url("+blok.image.filename+")"} hoogte={blok.hoogte} {...storyblokEditable(blok)}>
       <Row className="fullWidth">
           <Col></Col>
           <Col sm={8} >

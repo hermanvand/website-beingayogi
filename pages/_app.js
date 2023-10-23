@@ -40,7 +40,7 @@ const components = {
   highlight: Highlight
 }
 
-const myToken = process.env.STORYBLOK_API_KEY;
+const myToken = process.env.NEXT_PUBLIC_STORYBLOK_API_KEY;
 
 storyblokInit({
   accessToken: myToken,

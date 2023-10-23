@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Container, Row, Col } from "react-bootstrap"
 import DynamicIcon from '../../DynamicIcon'
+import { storyblokEditable } from '@storyblok/react'
 
 // geel:#BA9645
 // oranje:#B76352
@@ -47,7 +48,7 @@ function Feature ({blok}) {
   }
 
   return (
-    <StyledContainer bordercolor={ borderColor }>
+    <StyledContainer bordercolor={ borderColor } {...storyblokEditable(blok)}>
         <Row>
             <Col>
                 <a href={blok.link.cached_url} className="text-decoration-none text-reset notContentLink">

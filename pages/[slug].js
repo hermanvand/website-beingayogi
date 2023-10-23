@@ -1,5 +1,5 @@
 import React from 'react'
-import { StoryblokComponent } from "@storyblok/react"
+import { StoryblokComponent, useStoryblokState } from "@storyblok/react"
 import validator from 'validator';
 
 // libs
@@ -10,7 +10,9 @@ import Layout from "../components/layout/layout"
 import NotFound from "../components/pages/notFound"
 
 // return a dynamic storyblok page
-function DynamicSlug ({story}) {
+function DynamicSlug ({story: initialStory}) {
+  const story = useStoryblokState(initialStory);
+
   return (
     <Layout title={story?.content.title} description={story?.content.intro}>
       {(! story) ? (
