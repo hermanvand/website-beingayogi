@@ -1,6 +1,6 @@
 import '../styles/bootstrap.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faAdjust, faInfo, faPlay, faSearch, faExternalLinkAlt, faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAdjust, faInfo, faPlay, faSearch, faExternalLinkAlt, faAlignLeft, faStar } from '@fortawesome/free-solid-svg-icons'
 import { AppWrapper } from '../context';
 import ErrorBoundary from '../lib/errorBoundary';
 
@@ -11,6 +11,7 @@ library.add(faSearch)
 library.add(faAdjust)
 library.add(faExternalLinkAlt)
 library.add(faAlignLeft)
+library.add(faStar)
 
 // init storyblok
 import { storyblokInit, apiPlugin } from "@storyblok/react";
@@ -26,6 +27,14 @@ import Introduction from '../components/bloks/home/introduction.js'
 import LinkCard from '../components/bloks/linkCard'
 import TextBox from '../components/bloks/textBox'
 import Highlight from '../components/bloks/highlight'
+import AppTagline from '../components/bloks/app/appTagline.js'
+import AppUsp from '../components/bloks/app/appUsp.js'
+import AppDemo from '../components/bloks/app/appDemo.js'
+import AppAbbo from '../components/bloks/app/appAbbo.js'
+import AppIntro from '../components/bloks/app/appIntro';
+import AppFaqQuestion from '../components/bloks/app/appFaqQuestion';
+import AppFaqCategory from '../components/bloks/app/appFaqCategory';
+import AppScreenshot from '../components/bloks/app/appScreenshot';
 
 const components = {
   feature: Feature,
@@ -37,7 +46,15 @@ const components = {
   introduction: Introduction,
   linkCard: LinkCard,
   textbox: TextBox,
-  highlight: Highlight
+  highlight: Highlight,
+  appTagline: AppTagline,
+  appUsp: AppUsp,
+  appDemo: AppDemo,
+  appAbbo: AppAbbo,
+  appIntro: AppIntro,
+  appFaqQuestion: AppFaqQuestion,
+  appFaqCategory: AppFaqCategory,
+  appScreenshot: AppScreenshot,
 }
 
 const myToken = process.env.NEXT_PUBLIC_STORYBLOK_API_KEY;

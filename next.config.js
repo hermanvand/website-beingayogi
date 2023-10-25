@@ -10,6 +10,16 @@ module.exports = {
           destination: '/info/overview',
           permanent: false,
         },
+        {
+          source: '/main',
+          destination: '/main/bewandel-het-yoga-pad',
+          permanent: false,
+        },
+        {
+          source: '/appje',
+          destination: '/appje/download',
+          permanent: false,
+        },
       ]
     },
   }

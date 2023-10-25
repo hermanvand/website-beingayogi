@@ -1,3 +1,13 @@
+// bootstrap original
+@import "~bootstrap/scss/bootstrap";
+
+
+// custom bootstrap variables
+$font-family-sans-serif: Segoe UI, Roboto, sans-serif;
+$primary: #01559A;
+$secondary: #AE877D;
+$success: #34605f;
+
 // theme colors
 // note: theme in context
 
@@ -127,13 +137,3 @@ hr.line {
         margin-bottom: 10px;
     }
 }
-
-
-// custom bootstrap variables
-$font-family-sans-serif: Segoe UI, Roboto, sans-serif;
-$primary: #01559A;
-$secondary: #AE877D;
-$success: #34605f;
-
-// bootstrap original
-@import "~bootstrap/scss/bootstrap";
