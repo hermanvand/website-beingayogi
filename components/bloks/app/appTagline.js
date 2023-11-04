@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Image } from "react-bootstrap"
 import { storyblokEditable } from '@storyblok/react'
 import EmailForm from '../../forms/emailForm'
 
@@ -31,7 +31,7 @@ const StyledContainer = styled(Container)`
     padding-right: 0px;
     margin-left: 0px;
     margin-right: 0px;
-  }
+  };
 `
 
 function AppTagline ({blok}) {
@@ -40,9 +40,10 @@ function AppTagline ({blok}) {
     <StyledContainer {...storyblokEditable(blok)}>
         <Row className="fullWidth">
             <Col></Col>
-            <Col sm={8} >
+            <Col sm={6} >
               <p className="tagline">{blok.tagline}</p>
               <p className="secondline">{blok.secondline}</p>
+              <Image src={blok.image.filename} fluid />
             </Col>
             <Col></Col>
         </Row>
