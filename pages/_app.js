@@ -35,6 +35,7 @@ import AppIntro from '../components/bloks/app/appIntro';
 import AppFaqQuestion from '../components/bloks/app/appFaqQuestion';
 import AppFaqCategory from '../components/bloks/app/appFaqCategory';
 import AppScreenshot from '../components/bloks/app/appScreenshot';
+import AppRender from '../components/bloks/app/appRender';
 
 const components = {
   feature: Feature,
@@ -55,6 +56,7 @@ const components = {
   appFaqQuestion: AppFaqQuestion,
   appFaqCategory: AppFaqCategory,
   appScreenshot: AppScreenshot,
+  appRender: AppRender,
 }
 
 const myToken = process.env.NEXT_PUBLIC_STORYBLOK_API_KEY;
