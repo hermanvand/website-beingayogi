@@ -9,7 +9,7 @@ const StyledContainer = styled(Container)`
 };
 `
 
-function AppRender ({blok}) {
+function Render ({blok}) {
 
   return (
     <StyledContainer {...storyblokEditable(blok)}>
@@ -29,4 +29,4 @@ function AppRender ({blok}) {
   )
 }
 
-export default AppRender
+export default Render
