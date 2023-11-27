@@ -64,7 +64,7 @@ function Footer(props) {
                     <li><a href="/app">APP</a></li>
                     <li><a href="/terms">Algemene voorwaarden</a></li>
                     </ul>
-                    <p>Being a yogi is een initiatief van het <a href="https://bamboehuis.amsterdam">Bamboehuis</a>. &copy; 2022</p>
+                    <p>Being a yogi is een initiatief van het <a href="https://bamboehuis.amsterdam">Bamboehuis in Amsterdam</a>. &copy; 2023</p>
                 </Col>
                 </Row>
         </StyledContainer>
