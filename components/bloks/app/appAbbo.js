@@ -14,11 +14,11 @@ const StyledContainer = styled(Container)`
   }; 
   .darkBackground {
     background-color: #AE877D;
+    margin-bottom: 20px;
   };
   .abboItem {
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-bottom: 20px;
   };
   .abboPart1 {
     padding-top: 20px;
