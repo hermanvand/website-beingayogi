@@ -72,6 +72,13 @@ function AppDemo ({blok}) {
           </Col>
           <Col></Col>
         </Row>
+        <Row className="fullWidth">
+            <Col></Col>
+            <Col sm={8} className="demoDescription">
+                <p>{blok.why}</p>
+            </Col>
+            <Col></Col>
+        </Row>
     </StyledContainer>
   )
 }
