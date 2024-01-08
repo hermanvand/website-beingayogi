@@ -13,14 +13,15 @@ const StyledContainer = styled(Container)`
   };
   // row 2
   // hide scrollbar
-  .scrollBox::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome browsers */
-  }
-  .scrollBox {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none;  /* mozilla */
-  }
+  // .scrollBox::-webkit-scrollbar {
+  //   display: none;  /* Safari and Chrome browsers */
+  // }
+  // .scrollBox {
+  //     -ms-overflow-style: none; /* IE and Edge */
+  //     scrollbar-width: none;  /* mozilla */
+  // }
   .item {
+    padding-bottom: 10px;
   }
   .itemBG {
     position: relative;
@@ -61,6 +62,17 @@ const StyledContainer = styled(Container)`
   }
 `
 
+// <OverlayTrigger
+// placement="bottom"
+// overlay={<Tooltip>{article.content.summary}</Tooltip>}>
+//   <a className="subjectLink notContentLink" href={"/"+article.full_slug}>
+//     <div className="itemBG" style={{backgroundImage: "url("+article.content.image+")"}}>
+//       <div className="anchorBG">
+//         {article.content.title}
+//       </div>
+//     </div>
+//   </a>
+// </OverlayTrigger>
 function SubjectRow({blok}) {
   //console.log(JSON.stringify(blok))
 
@@ -82,17 +94,13 @@ function SubjectRow({blok}) {
         if (article.content) {
           return (
             <Col className="item" key={article.content._uid} xs="auto">
-              <OverlayTrigger
-                placement="bottom"
-                overlay={<Tooltip>{article.content.summary}</Tooltip>}>
-                  <a className="subjectLink notContentLink" href={"/"+article.full_slug}>
-                    <div className="itemBG" style={{backgroundImage: "url("+article.content.image+")"}}>
-                      <div className="anchorBG">
-                        {article.content.title}
-                      </div>
-                    </div>
-                  </a>
-              </OverlayTrigger>
+              <a className="subjectLink notContentLink" href={"/"+article.full_slug}>
+                <div className="itemBG" style={{backgroundImage: "url("+article.content.image+")"}}>
+                  <div className="anchorBG">
+                    {article.content.title}
+                  </div>
+                </div>
+              </a>
             </Col>
           )
         }
