@@ -69,7 +69,7 @@ storyblokInit({
     https: true,
     cache: {
       clear: 'auto',
-      type: 'memory'
+      type: 'none'
     }
   },
   components,
