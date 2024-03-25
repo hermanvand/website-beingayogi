@@ -1,0 +1,45 @@
+FROM node:21-alpine as build
+LABEL org.opencontainers.image.source https://github.com/hermanvand/website-beingayogi
+
+# build source
+WORKDIR /build
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_OPTIONS="--max-old-space-size=400"
+
+COPY . ./
+RUN npm i --production
+RUN npm run build
+
+
+# build dependencies
+FROM build as deps
+WORKDIR /deps
+
+COPY package*.json ./
+RUN npm i --production
+
+
+# PROD image
+FROM build as prod
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED 1
+ENV NODE_OPTIONS="--max-old-space-size=400"
+
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -u 1001 -S nextjs 
+
+COPY --from=deps /deps/node_modules node_modules/
+COPY --from=build --chown=nextjs:nodejs /build/.next .next/
+COPY --from=build /build/package.json ./
+COPY --from=build /build/next.config.js ./
+COPY --from=build /build/.env.production ./
+COPY --from=build /build/public public/
+
+USER nextjs
+
+EXPOSE 3000
+CMD npm start
