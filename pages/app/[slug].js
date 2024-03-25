@@ -33,7 +33,7 @@ export async function getStaticProps({ params }) {
   // params.slug = validator.whitelist(params.slug, chars)
   
   // init
-  let sbSlug = "appje/"+params.slug;
+  let sbSlug = "app/"+params.slug;
   let sbParams = {
   };
 
@@ -50,7 +50,7 @@ export async function getStaticProps({ params }) {
 //list the slugs to fetch
 export async function getStaticPaths() {
     let sbParams = {
-      starts_with: "appje/"
+      starts_with: "app/"
     };
   
     let links = await getLinksFromStoryBlok(sbParams);

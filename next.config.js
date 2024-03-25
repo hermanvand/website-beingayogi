@@ -16,8 +16,8 @@ module.exports = {
           permanent: false,
         },
         {
-          source: '/appje',
-          destination: '/appje/download',
+          source: '/app',
+          destination: '/app/download',
           permanent: false,
         },
       ]
