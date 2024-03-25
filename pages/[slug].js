@@ -53,7 +53,6 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { slug: 'app' } },
       { params: { slug: 'terms' } }
     ],
     fallback: false
