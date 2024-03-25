@@ -34,6 +34,15 @@ const StyledContainer = styled(Container)`
   };
 `
 
+/*
+        <Row className="form">
+          <Col></Col>
+          <Col sm={8}>
+            <EmailForm></EmailForm>
+          </Col>
+          <Col></Col>
+        </Row>
+*/
 function AppTagline ({blok}) {
 
   return (
@@ -46,13 +55,6 @@ function AppTagline ({blok}) {
               <Image src={blok.image.filename} fluid />
             </Col>
             <Col></Col>
-        </Row>
-        <Row className="form">
-          <Col></Col>
-          <Col sm={8}>
-            <EmailForm></EmailForm>
-          </Col>
-          <Col></Col>
         </Row>
     </StyledContainer>
   )

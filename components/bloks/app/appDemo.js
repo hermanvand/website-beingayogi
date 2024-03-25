@@ -66,9 +66,11 @@ function AppDemo ({blok}) {
         <Row>
         <Col></Col>
           <Col sm={8}>
+            {(blok.youtube_video_id) &&
             <div className="videoContainer">
               <iframe src={"https://www.youtube.com/embed/" + blok.youtube_video_id + "?start=13"} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
+            }
           </Col>
           <Col></Col>
         </Row>
