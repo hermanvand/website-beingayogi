@@ -85,7 +85,11 @@ function Header(props) {
                             <NavDropdown.Item href="/info/yoga">Yoga zoals het bedoeld is</NavDropdown.Item>
                         </NavDropdown>
                         <NavLink className="myNavbarItem" href="/contact">Contact</NavLink>
-                        <NavLink className="myNavbarItem" href="/app">APP</NavLink>
+                        <NavDropdown className="myNavbarItem" title="App" id="collasible-nav-dropdown4">
+                            <NavDropdown.Item href="/app/download">App home</NavDropdown.Item>
+                            <NavDropdown.Item href="/app/screenshot">App screenshots</NavDropdown.Item>
+                            <NavDropdown.Item href="/app/faq">App faq</NavDropdown.Item>
+                        </NavDropdown>
                         <Container id="myNavbarContainer" className="myNavbarItem">
                             <Search/>
                         </Container>
